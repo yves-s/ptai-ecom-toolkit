@@ -1,0 +1,342 @@
+{
+  "version": "0.1.20260902",
+  "status_code": 20000,
+  "status_message": "Ok.",
+  "time": "0.1018 sec.",
+  "cost": 0.09,
+  "tasks_count": 1,
+  "tasks_error": 0,
+  "tasks": [
+    {
+      "id": "09070755-2264-0367-0000-0e961d0992ec",
+      "status_code": 20000,
+      "status_message": "Ok.",
+      "time": "0.0348 sec.",
+      "cost": 0.09,
+      "result_count": 4,
+      "path": [
+        "v3",
+        "keywords_data",
+        "google_ads",
+        "search_volume",
+        "live"
+      ],
+      "data": {
+        "api": "keywords_data",
+        "function": "search_volume",
+        "se": "google_ads",
+        "keywords": [
+          "ai operator",
+          "ecommerce beratung",
+          "seo agentur",
+          "shopify agentur"
+        ],
+        "location_code": 2276,
+        "language_code": "de",
+        "tag": "dev/2026-09-07/fixtures"
+      },
+      "result": [
+        {
+          "keyword": "ai operator",
+          "spell": null,
+          "location_code": 2276,
+          "language_code": "de",
+          "search_partners": false,
+          "competition": "LOW",
+          "competition_index": 28,
+          "search_volume": 40,
+          "low_top_of_page_bid": 2.11,
+          "high_top_of_page_bid": 6.02,
+          "cpc": null,
+          "monthly_searches": [
+            {
+              "year": 2026,
+              "month": 7,
+              "search_volume": 30
+            },
+            {
+              "year": 2026,
+              "month": 6,
+              "search_volume": 30
+            },
+            {
+              "year": 2026,
+              "month": 5,
+              "search_volume": 40
+            },
+            {
+              "year": 2026,
+              "month": 4,
+              "search_volume": 40
+            },
+            {
+              "year": 2026,
+              "month": 3,
+              "search_volume": 50
+            },
+            {
+              "year": 2026,
+              "month": 2,
+              "search_volume": 40
+            },
+            {
+              "year": 2026,
+              "month": 1,
+              "search_volume": 50
+            },
+            {
+              "year": 2025,
+              "month": 12,
+              "search_volume": 50
+            },
+            {
+              "year": 2025,
+              "month": 11,
+              "search_volume": 50
+            },
+            {
+              "year": 2025,
+              "month": 10,
+              "search_volume": 40
+            },
+            {
+              "year": 2025,
+              "month": 9,
+              "search_volume": 40
+            },
+            {
+              "year": 2025,
+              "month": 8,
+              "search_volume": 50
+            }
+          ]
+        },
+        {
+          "keyword": "ecommerce beratung",
+          "spell": null,
+          "location_code": 2276,
+          "language_code": "de",
+          "search_partners": false,
+          "competition": "MEDIUM",
+          "competition_index": 47,
+          "search_volume": 480,
+          "low_top_of_page_bid": 7.3,
+          "high_top_of_page_bid": 48.29,
+          "cpc": 30.27,
+          "monthly_searches": [
+            {
+              "year": 2026,
+              "month": 7,
+              "search_volume": 210
+            },
+            {
+              "year": 2026,
+              "month": 6,
+              "search_volume": 260
+            },
+            {
+              "year": 2026,
+              "month": 5,
+              "search_volume": 260
+            },
+            {
+              "year": 2026,
+              "month": 4,
+              "search_volume": 390
+            },
+            {
+              "year": 2026,
+              "month": 3,
+              "search_volume": 480
+            },
+            {
+              "year": 2026,
+              "month": 2,
+              "search_volume": 880
+            },
+            {
+              "year": 2026,
+              "month": 1,
+              "search_volume": 720
+            },
+            {
+              "year": 2025,
+              "month": 12,
+              "search_volume": 390
+            },
+            {
+              "year": 2025,
+              "month": 11,
+              "search_volume": 260
+            },
+            {
+              "year": 2025,
+              "month": 10,
+              "search_volume": 260
+            },
+            {
+              "year": 2025,
+              "month": 9,
+              "search_volume": 720
+            },
+            {
+              "year": 2025,
+              "month": 8,
+              "search_volume": 720
+            }
+          ]
+        },
+        {
+          "keyword": "seo agentur",
+          "spell": null,
+          "location_code": 2276,
+          "language_code": "de",
+          "search_partners": false,
+          "competition": "HIGH",
+          "competition_index": 68,
+          "search_volume": 4400,
+          "low_top_of_page_bid": 11.4,
+          "high_top_of_page_bid": 26.61,
+          "cpc": 22.91,
+          "monthly_searches": [
+            {
+              "year": 2026,
+              "month": 7,
+              "search_volume": 2400
+            },
+            {
+              "year": 2026,
+              "month": 6,
+              "search_volume": 2900
+            },
+            {
+              "year": 2026,
+              "month": 5,
+              "search_volume": 2400
+            },
+            {
+              "year": 2026,
+              "month": 4,
+              "search_volume": 2900
+            },
+            {
+              "year": 2026,
+              "month": 3,
+              "search_volume": 5400
+            },
+            {
+              "year": 2026,
+              "month": 2,
+              "search_volume": 4400
+            },
+            {
+              "year": 2026,
+              "month": 1,
+              "search_volume": 5400
+            },
+            {
+              "year": 2025,
+              "month": 12,
+              "search_volume": 3600
+            },
+            {
+              "year": 2025,
+              "month": 11,
+              "search_volume": 4400
+            },
+            {
+              "year": 2025,
+              "month": 10,
+              "search_volume": 4400
+            },
+            {
+              "year": 2025,
+              "month": 9,
+              "search_volume": 12100
+            },
+            {
+              "year": 2025,
+              "month": 8,
+              "search_volume": 4400
+            }
+          ]
+        },
+        {
+          "keyword": "shopify agentur",
+          "spell": null,
+          "location_code": 2276,
+          "language_code": "de",
+          "search_partners": false,
+          "competition": "MEDIUM",
+          "competition_index": 56,
+          "search_volume": 880,
+          "low_top_of_page_bid": 6.13,
+          "high_top_of_page_bid": 35.45,
+          "cpc": 27.78,
+          "monthly_searches": [
+            {
+              "year": 2026,
+              "month": 7,
+              "search_volume": 480
+            },
+            {
+              "year": 2026,
+              "month": 6,
+              "search_volume": 590
+            },
+            {
+              "year": 2026,
+              "month": 5,
+              "search_volume": 480
+            },
+            {
+              "year": 2026,
+              "month": 4,
+              "search_volume": 720
+            },
+            {
+              "year": 2026,
+              "month": 3,
+              "search_volume": 1000
+            },
+            {
+              "year": 2026,
+              "month": 2,
+              "search_volume": 880
+            },
+            {
+              "year": 2026,
+              "month": 1,
+              "search_volume": 880
+            },
+            {
+              "year": 2025,
+              "month": 12,
+              "search_volume": 720
+            },
+            {
+              "year": 2025,
+              "month": 11,
+              "search_volume": 880
+            },
+            {
+              "year": 2025,
+              "month": 10,
+              "search_volume": 880
+            },
+            {
+              "year": 2025,
+              "month": 9,
+              "search_volume": 1600
+            },
+            {
+              "year": 2025,
+              "month": 8,
+              "search_volume": 880
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,41 @@
+{
+  "data": {
+    "products": {
+      "pageInfo": {"hasNextPage": true, "endCursor": "eyJsYXN0X2lkIjoxfQ=="},
+      "nodes": [
+        {
+          "handle": "ohrstecker-gold", "title": "Ohrstecker Gold", "status": "ACTIVE",
+          "productType": "Schmuck", "vendor": "Beispielshop",
+          "description": "Ohrstecker aus 925er Silber, vergoldet. Handgefertigt in kleiner Serie.",
+          "seo": {"title": "Ohrstecker Gold kaufen", "description": "Handgefertigte Ohrstecker"},
+          "images": {"nodes": [
+            {"url": "https://cdn.example/1.jpg", "altText": "Ohrstecker in Gold"},
+            {"url": "https://cdn.example/2.jpg", "altText": "Ohrstecker seitlich"}]},
+          "variants": {"nodes": [
+            {"sku": "OHR-G-01", "price": "39.00",
+             "inventoryItem": {"unitCost": {"amount": "12.50"}}}]}
+        },
+        {
+          "handle": "kette-silber", "title": "Kette Silber", "status": "ACTIVE",
+          "productType": "Schmuck", "vendor": "Beispielshop",
+          "description": "Kette aus 925er Silber.",
+          "seo": {"title": "", "description": "Silberkette"},
+          "images": {"nodes": [{"url": "https://cdn.example/3.jpg", "altText": ""}]},
+          "variants": {"nodes": [
+            {"sku": "KET-S-01", "price": "59.00", "inventoryItem": {"unitCost": null}},
+            {"sku": null, "price": "69.00", "inventoryItem": {"unitCost": null}}]}
+        },
+        {
+          "handle": "ring-rosegold", "title": "Ring Rosegold", "status": "DRAFT",
+          "productType": "Schmuck", "vendor": "Beispielshop",
+          "description": "",
+          "seo": {"title": "Ring Rosegold", "description": null},
+          "images": {"nodes": []},
+          "variants": {"nodes": [
+            {"sku": "RIN-R-01", "price": "49.00",
+             "inventoryItem": {"unitCost": {"amount": "0.00"}}}]}
+        }
+      ]
+    }
+  }
+}

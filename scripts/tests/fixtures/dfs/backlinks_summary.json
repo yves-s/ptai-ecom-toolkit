@@ -1,0 +1,90 @@
+{
+  "version": "0.1.20260902",
+  "status_code": 20000,
+  "status_message": "Ok.",
+  "time": "0.1726 sec.",
+  "cost": 0.024036,
+  "tasks_count": 1,
+  "tasks_error": 0,
+  "tasks": [
+    {
+      "id": "09070755-2264-0265-0000-bca42a930c16",
+      "status_code": 20000,
+      "status_message": "Ok.",
+      "time": "0.1464 sec.",
+      "cost": 0.024036,
+      "result_count": 1,
+      "path": [
+        "v3",
+        "backlinks",
+        "summary",
+        "live"
+      ],
+      "data": {
+        "api": "backlinks",
+        "function": "summary",
+        "target": "path-to-ai.com",
+        "internal_list_limit": 10,
+        "backlinks_status_type": "live",
+        "tag": "dev/2026-09-07/fixtures"
+      },
+      "result": [
+        {
+          "target": "path-to-ai.com",
+          "first_seen": "2026-06-11 22:59:44 +00:00",
+          "lost_date": null,
+          "rank": 0,
+          "backlinks": 23,
+          "backlinks_spam_score": 62,
+          "crawled_pages": 0,
+          "info": {
+            "server": null,
+            "cms": null,
+            "platform_type": null,
+            "ip_address": null,
+            "country": null,
+            "is_ip": false,
+            "target_spam_score": 0
+          },
+          "internal_links_count": 0,
+          "external_links_count": 0,
+          "broken_backlinks": 0,
+          "broken_pages": 0,
+          "referring_domains": 23,
+          "referring_domains_nofollow": 4,
+          "referring_main_domains": 23,
+          "referring_main_domains_nofollow": 4,
+          "referring_ips": 20,
+          "referring_subnets": 19,
+          "referring_pages": 23,
+          "referring_pages_nofollow": 4,
+          "referring_links_tld": {
+            "com": 18,
+            "shop": 4,
+            "us.com": 1
+          },
+          "referring_links_types": {
+            "anchor": 23
+          },
+          "referring_links_attributes": {
+            "noopener": 19,
+            "nofollow": 4
+          },
+          "referring_links_platform_types": {
+            "unknown": 19,
+            "blogs": 4,
+            "cms": 4
+          },
+          "referring_links_semantic_locations": {
+            "": 19,
+            "main": 4
+          },
+          "referring_links_countries": {
+            "": 21,
+            "US": 2
+          }
+        }
+      ]
+    }
+  ]
+}

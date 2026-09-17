@@ -1,0 +1,187 @@
+{
+  "shop": "beispielshop.example",
+  "meta": {
+    "erstelltFuer": "Beispielshop",
+    "stand": "Juni 2026",
+    "year": "2026",
+    "kategorie": "Rucksäcke und Reisegepäck"
+  },
+  "exec": {
+    "headline": "Gutes Produkt, zu leise im Netz: drei Hebel für die nächsten Wochen",
+    "summary": [
+      "Beispielshop verkauft robuste Rucksäcke mit langer Garantie. Die Produkte überzeugen, aber <b>Suchmaschinen und KI-Antworten finden den Shop selten</b>, und auf der Produktseite fehlen die Belege, die ein Kauf braucht.",
+      "Der größte Hebel liegt bei den <span class='hl'>Kategorieseiten und den Bewertungen</span>. Beides lässt sich in wenigen Wochen umsetzen, ohne das Theme neu zu bauen."
+    ],
+    "scores": [
+      {"label": "SEO-FUNDAMENT", "short": "SEO", "score": 47, "target": 65, "caption": "Technisch sauber, aber Kategorieseiten ohne eigenen Text und Produktdaten ohne Bewertungs-Markup."},
+      {"label": "E-COMMERCE", "short": "E-Com", "score": 41, "target": 60, "caption": "Versandkosten und Bewertungen erscheinen zu spät, Größenangaben lassen Fragen offen."},
+      {"label": "KI-SICHTBARKEIT (GEO)", "short": "GEO", "score": 36, "target": 58, "caption": "Wenige zitierbare Textpassagen, die Marke taucht in KI-Antworten zu Kaufkriterien kaum auf."}
+    ],
+    "composite": 41,
+    "takeaways": [
+      "Kategorieseiten bekommen einen eigenen Einleitungstext mit den Begriffen, nach denen gesucht wird.",
+      "Bewertungen stehen auf der Produktseite und als strukturierte Daten in der Suche.",
+      "Versandkosten und Lieferzeit stehen vor dem Warenkorb, nicht erst im Checkout.",
+      "Ein Ratgeber zu Kaufkriterien beantwortet die Vergleichsfragen selbst.",
+      "Garantie und Herkunft der Produkte werden sichtbar erzählt."
+    ],
+    "teaserFindings": [
+      {"title": "Kategorieseiten ohne eigenen Text", "body": "Die Kategorieseiten zeigen nur Produktkacheln. Suchmaschinen fehlt der Text, um die Seite einem Suchbegriff zuzuordnen."},
+      {"title": "Keine Bewertungen auf der Produktseite", "body": "Bewertungen gibt es, sie stehen aber nur auf einer eigenen Seite. Am Kaufpunkt fehlt der Beleg."},
+      {"title": "Title & Meta Description generisch", "body": "Viele Seiten tragen denselben Titel. In der Suche sieht das austauschbar aus und kostet Klicks."}
+    ]
+  },
+  "chapters": [
+    {
+      "pillar": "found",
+      "title": "Sichtbarkeit & KI-Präsenz",
+      "intro": "Wie gut finden Suchmaschinen und KI-Antworten den Shop, und was sehen sie, wenn sie ihn finden? Geprüft wurden Crawl, Seitentitel, strukturierte Daten und <b>zitierbare Textpassagen</b>.",
+      "skills": ["seo-audit", "seo-ecommerce", "seo-geo", "seo-schema"],
+      "findings": [
+        {"severity": "crit", "title": "Kategorieseiten ohne eigenen Text", "body": "Alle Kategorieseiten zeigen nur Produktkacheln. <b>Kein Einleitungstext</b> nennt, was die Kategorie ausmacht.", "evidence": "Crawl: 12 von 12 Kategorieseiten ohne Fließtext über den Kacheln.", "recommendation": "Je Kategorie einen kurzen Einleitungstext mit den wichtigsten Suchbegriffen und einer Kaufhilfe ergänzen.", "impact": "Mehr Sichtbarkeit für Kategoriebegriffe, die Kaufabsicht tragen.", "effort": "2 bis 3 Tage", "skill_source": "seo-audit"},
+        {"severity": "crit", "title": "Produktdaten ohne Bewertungs-Markup", "body": "Die Produktseiten tragen strukturierte Daten, aber <b>ohne Bewertungen</b>. Sterne in der Suche bleiben damit aus.", "evidence": "Crawl: Product-Markup auf allen Produktseiten, aggregateRating auf keiner.", "recommendation": "Bewertungen aus der bestehenden App in das Product-Markup übernehmen.", "impact": "Sterne in den Suchergebnissen und mehr Klicks auf Produktseiten.", "effort": "1 bis 2 Tage", "skill_source": "seo-schema"},
+        {"severity": "warn", "title": "Startseite ohne H1", "body": "Die Startseite hat <b>keine Hauptüberschrift</b>. Das Thema der Seite ergibt sich nur aus Bildern.", "evidence": "Crawl: Startseite ohne h1-Element.", "recommendation": "Eine H1 setzen, die Sortiment und Nutzen in einem Satz nennt.", "impact": "Klareres Themensignal für Suchmaschinen und KI-Systeme.", "effort": "0,5 Tag", "skill_source": "seo-audit"},
+        {"severity": "warn", "title": "Kaum zitierbare Textpassagen für KI-Antworten", "body": "Die Produkttexte bestehen aus Stichpunkten. <b>KI-Antworten finden keine Passage</b>, die sie übernehmen können.", "evidence": "Stichprobe von 10 Produktseiten: keine Passage über 40 Wörter.", "recommendation": "Je Bestseller einen Absatz ergänzen, der Einsatzzweck, Material und Garantie erklärt.", "impact": "Höhere Chance, in KI-Antworten zu Kaufkriterien genannt zu werden.", "effort": "3 bis 5 Tage", "skill_source": "seo-geo"},
+        {"severity": "warn", "title": "Title & Meta Description generisch", "body": "Viele Seiten tragen denselben Titel mit dem Shopnamen. <b>In der Suche wirken sie austauschbar.</b>", "evidence": "Crawl: 30 Seiten mit identischem Title.", "recommendation": "Titel und Beschreibung je Seitentyp nach einem Muster mit Produkt und Nutzen schreiben.", "impact": "Mehr Klicks aus der Suche auf dieselben Rankings.", "effort": "1 bis 2 Tage", "skill_source": "seo-ecommerce"},
+        {"severity": "warn", "title": "Organisation ohne strukturierte Daten", "body": "Es gibt <b>kein Organization-Markup</b>. Name, Logo und Profile der Marke sind für Maschinen nicht verknüpft.", "evidence": "Crawl: Startseite ohne Organization- und WebSite-Markup.", "recommendation": "Organization- und WebSite-Markup mit Logo und Profilen ergänzen.", "impact": "Bessere Zuordnung der Marke in Knowledge Graph und KI-Systemen.", "effort": "0,5 Tag", "skill_source": "seo-schema"}
+      ],
+      "topN": 4
+    },
+    {
+      "pillar": "convince",
+      "title": "Vom Besuch zum Kauf",
+      "intro": "Was ein Besucher auf dem Weg von der Produktseite bis zur Zahlungsauswahl sieht, und wo er <b>ohne Antwort</b> bleibt. Geprüft wurden Screenshots, Kaufstrecke und Produktseiten.",
+      "skills": ["conversion", "landing-page", "copywriting"],
+      "findings": [
+        {"severity": "crit", "title": "Versandkosten erst im Checkout sichtbar", "body": "<b>Versandkosten erscheinen erst im letzten Schritt.</b> Wer vorher rechnen will, muss den Kauf beginnen.", "evidence": "Kaufstrecke durchlaufen: erster Hinweis auf Versandkosten im Checkout.", "recommendation": "Versandkosten und die Grenze für kostenlosen Versand auf Produktseite und im Warenkorb nennen.", "impact": "Weniger Abbrüche im Checkout.", "effort": "1 bis 2 Tage", "skill_source": "conversion"},
+        {"severity": "crit", "title": "Keine Bewertungen auf der Produktseite", "body": "Bewertungen gibt es, sie stehen aber <b>nur auf einer eigenen Seite</b>.", "evidence": "Screenshots der Produktseiten: kein Bewertungsblock über dem Kaufbutton.", "recommendation": "Sterne und die drei hilfreichsten Bewertungen neben den Kaufbutton setzen.", "impact": "Mehr Vertrauen am Kaufpunkt.", "effort": "1 bis 2 Tage", "skill_source": "conversion"},
+        {"severity": "warn", "title": "Größenangaben ohne Vergleich", "body": "Volumen und Maße stehen da, <b>aber ohne Vergleich</b> mit Alltagsgegenständen.", "evidence": "Stichprobe von 10 Produktseiten: Maße in Zentimetern, keine Vergleichsgröße.", "recommendation": "Eine Vergleichsgrafik mit Laptop, Wasserflasche und Handgepäckmaß ergänzen.", "impact": "Weniger Rückfragen und Retouren wegen falscher Größe.", "effort": "2 bis 3 Tage", "skill_source": "landing-page"},
+        {"severity": "warn", "title": "Zahlungsarten erst spät sichtbar", "body": "Die angebotenen Zahlungsarten erscheinen <b>erst im Checkout</b>.", "evidence": "Kaufstrecke durchlaufen: Zahlungsarten ab Schritt drei.", "recommendation": "Zahlungsarten als Symbole unter dem Kaufbutton zeigen.", "impact": "Weniger Unsicherheit vor dem Checkout.", "effort": "0,5 Tag", "skill_source": "conversion"},
+        {"severity": "warn", "title": "Ausverkaufte Varianten ohne Alternative", "body": "Ist eine Farbe ausverkauft, <b>endet die Seite in einer Sackgasse</b>.", "evidence": "Produktseiten mit ausverkauften Varianten: kein Hinweis auf Alternativen oder Wiederverfügbarkeit.", "recommendation": "Bei ausverkauften Varianten ähnliche Produkte und eine Benachrichtigung anbieten.", "impact": "Weniger verlorene Besuche auf ausverkauften Seiten.", "effort": "1 bis 2 Tage", "skill_source": "copywriting"}
+      ],
+      "topN": 4
+    },
+    {
+      "pillar": "market",
+      "title": "Markt & Wettbewerb",
+      "intro": "Wer bei denselben Suchen auftaucht, wie die anderen sich erklären und wo Beispielshop <b>eine Lücke besetzen</b> kann.",
+      "skills": ["competitor-analysis", "seo-competitor-pages", "customer-research"],
+      "findings": [
+        {"severity": "crit", "title": "Wettbewerber besetzt die Vergleichsanfragen", "body": "Bei Suchen nach Vergleichen steht <b>wettbewerber-eins.example</b> vorn, Beispielshop kommt nicht vor.", "evidence": "Stichprobe von 20 Vergleichsanfragen: Beispielshop in keiner Top 10.", "recommendation": "Eigene Vergleichsseiten zu den häufigsten Fragen anlegen.", "impact": "Sichtbarkeit bei Suchen kurz vor der Kaufentscheidung.", "effort": "1 Woche", "skill_source": "seo-competitor-pages"},
+        {"severity": "warn", "title": "Markenname wird selten gesucht", "body": "Die Marke ist <b>noch kaum bekannt</b>, fast alle Besuche kommen über allgemeine Begriffe.", "evidence": "Suchvolumen der Marke im Vergleich zu den drei Wettbewerbern am geringsten.", "recommendation": "Bekanntheit über Ratgeberinhalte und Kooperationen aufbauen.", "impact": "Unabhängiger von allgemeinen Rankings.", "effort": "2 bis 4 Wochen", "skill_source": "competitor-analysis"},
+        {"severity": "warn", "title": "Preisposition nicht erklärt", "body": "Beispielshop liegt über dem Durchschnitt, <b>erklärt den Preis aber nicht</b>.", "evidence": "Preisvergleich von 8 vergleichbaren Rucksäcken: Beispielshop im oberen Drittel.", "recommendation": "Garantie, Material und Reparaturservice als Begründung des Preises zeigen.", "impact": "Höhere Preisbereitschaft.", "effort": "2 bis 3 Tage", "skill_source": "customer-research"},
+        {"severity": "warn", "title": "Kein Ratgeber zu Kaufkriterien", "body": "Wettbewerber beantworten Fragen zu <b>Volumen, Material und Handgepäck</b> in eigenen Ratgebern.", "evidence": "Zwei von drei Wettbewerbern mit Ratgeberbereich, Beispielshop ohne.", "recommendation": "Einen Ratgeber mit den fünf häufigsten Kaufkriterien aufbauen.", "impact": "Mehr Einstiege über informierende Suchen.", "effort": "1 bis 2 Wochen", "skill_source": "competitor-analysis"},
+        {"severity": "warn", "title": "Herkunft der Produkte nicht sichtbar", "body": "Wo und wie die Rucksäcke entstehen, steht <b>nirgends im Shop</b>.", "evidence": "Crawl: keine Seite zu Herstellung oder Material.", "recommendation": "Eine Seite zu Herstellung, Material und Reparatur anlegen und von den Produktseiten verlinken.", "impact": "Klarere Abgrenzung gegen Marktplatz-Angebote.", "effort": "2 bis 3 Tage", "skill_source": "customer-research"}
+      ],
+      "topN": 4
+    }
+  ],
+  "fahrplan": {
+    "headline": "Drei Etappen zu mehr Sichtbarkeit und Umsatz",
+    "lead": "Zuerst die schnellen Korrekturen, dann die Produktseite, dann die Inhalte, die Beispielshop langfristig sichtbar machen.",
+    "stages": [
+      {"stage": "WOCHE 1 · QUICK WINS", "title": "Die schnellen Korrekturen", "items": ["H1 auf der Startseite setzen.", "Zahlungsarten unter dem Kaufbutton zeigen.", "Organization-Markup ergänzen."]},
+      {"stage": "MONAT 1 · SUBSTANZ", "title": "Die Produktseite stärken", "items": ["Bewertungen an den Kaufpunkt holen.", "Versandkosten vor dem Checkout nennen.", "Vergleichsgrafik für Größen ergänzen."]},
+      {"stage": "QUARTAL · AUTORITÄT", "title": "Gefunden und genannt werden", "items": ["Einleitungstexte für alle Kategorien schreiben.", "Ratgeber zu Kaufkriterien aufbauen.", "Vergleichsseiten zu den häufigsten Fragen anlegen."]}
+    ],
+    "proj": {
+      "from": "41",
+      "to": "60+",
+      "label": "Gesamt-Score, Ziel nach einem Quartal",
+      "text": "Mit den drei Etappen ist ein Gesamt-Score von <b>über 60</b> erreichbar, getragen vor allem von SEO und Conversion."
+    }
+  },
+  "cover": {
+    "eyebrow": "E-COMMERCE-AUDIT · RUCKSÄCKE & REISEGEPÄCK",
+    "headline": "Klare Kante, zu leise erzählt",
+    "intro": "Ein Blick von außen auf <b>beispielshop.example</b>: was Besucher finden, was sie überzeugt und wo der Markt schon weiter ist."
+  },
+  "market": {
+    "eyebrow": "DER MARKT",
+    "headline": "Zwischen Fachhandel und Marktplatz",
+    "narrative": [
+      "Rucksäcke und Reisegepäck verkaufen sich online über zwei Wege: <b>Fachhändler</b>, die beraten, und Marktplätze, die über den Preis gehen.",
+      "Beispielshop steht mit Garantie und Reparaturservice klar auf der Seite der Beratung, sagt das aber zu leise."
+    ],
+    "callouts": [
+      {"value": "1", "unit": "Produkt", "body": "Der <b>Beispiel-Rucksack</b> trägt fast die Hälfte der Suchanfragen, die zur Marke führen."},
+      {"value": "3", "unit": "", "body": "Wettbewerber teilen sich die ersten Plätze bei den Vergleichsanfragen."},
+      {"value": "Reisegepäck", "unit": "", "body": "ist die Kategorie mit der größten Lücke zwischen Nachfrage und eigener Sichtbarkeit."}
+    ]
+  },
+  "profile": {
+    "eyebrow": "BEISPIELSHOP AUF EINEN BLICK",
+    "rows": [
+      {"k": "Sitz", "v": "Musterstadt"},
+      {"k": "Gegründet", "v": "2015"},
+      {"k": "Sortiment", "v": "Rucksäcke, Taschen, Reisegepäck"},
+      {"k": "Kanäle", "v": "eigener Shop, ein Marktplatz"},
+      {"k": "Shop", "v": "Shopify"}
+    ],
+    "positioningLine": "Robuste Rucksäcke mit <b>langer Garantie</b> für Menschen, die viel unterwegs sind.",
+    "note": "Alle Angaben stammen aus öffentlich zugänglichen Quellen und dem Shop selbst."
+  },
+  "positioning": {
+    "eyebrow": "DAS SPIELFELD",
+    "headline": "Wo Beispielshop heute steht",
+    "intro": "Eingeordnet nach Preisniveau und Sichtbarkeit in der Suche. Beispielshop ist hochwertig, aber kaum sichtbar.",
+    "axisX": {"left": "günstig und austauschbar", "right": "hochwertig und erklärt"},
+    "axisY": {"top": "stark sichtbar", "bottom": "kaum sichtbar"},
+    "highlightQuadrant": "br",
+    "points": [
+      {"label": "Beispielshop", "x": 0.72, "y": 0.35, "tier": "self"},
+      {"label": "wettbewerber-eins.example", "x": 0.4, "y": 0.7, "tier": "direct"},
+      {"label": "Vergleichshaus", "x": 0.2, "y": 0.25, "tier": "indirect"},
+      {"label": "Taschenhaus Muster", "x": 0.8, "y": 0.85, "tier": "heritage"}
+    ],
+    "note": "Einordnung aus Suchsichtbarkeit und Preisniveau, keine Umfrage."
+  },
+  "matrix": {
+    "eyebrow": "IM DIREKTEN VERGLEICH",
+    "headline": "Was die anderen schon zeigen",
+    "intro": "Fünf Dinge, die Käufer vor der Entscheidung suchen, im Vergleich mit drei Wettbewerbern.",
+    "columns": ["Beispielshop", "wettbewerber-eins.example", "Vergleichshaus", "Taschenhaus Muster"],
+    "capabilities": [
+      {"label": "Bewertungen auf der Produktseite", "ratings": [0, 2, 2, 1]},
+      {"label": "Versandkosten vor dem Checkout", "ratings": [2, 1, 0, 2]},
+      {"label": "Größen- und Packmaßangaben", "ratings": [0, 2, 2, 1]},
+      {"label": "Ratgeber zu Kaufkriterien", "ratings": [1, 2, 2, 0]},
+      {"label": "Strukturierte Produktdaten", "ratings": [1, 2, 2, 1]}
+    ],
+    "takeaway": "Beispielshop hat das bessere Produkt, zeigt aber <b>weniger Belege</b> als die Wettbewerber."
+  },
+  "triage": {
+    "eyebrow": "STRATEGIE",
+    "headline": "Worauf es jetzt ankommt",
+    "columns": [
+      {"label": "DOPPELT DRAUF SETZEN", "items": ["Garantie sichtbar machen", "Beispiel-Rucksack als Einstieg"]},
+      {"label": "LÜCKEN FÜLLEN", "items": ["Bewertungen an die Produktseite", "Versandkosten früh zeigen", "Ratgeber zu Kaufkriterien"]},
+      {"label": "BEWUSST IGNORIEREN", "items": ["Preiskampf auf Marktplätzen", "Kurzlebige Social-Trends"]}
+    ]
+  },
+  "levers": {
+    "eyebrow": "WO WIR ANDOCKEN",
+    "headline": "Drei Hebel mit AI-Agents",
+    "intro": "Wo spezialisierte Agents die Umsetzung übernehmen können, und wie weit der Shop dort ist.",
+    "rows": [
+      {"hebel": "Produkttexte und FAQ", "wirkung": "Produkt in KI-Antworten zitierbar machen", "reife": "OFFEN"},
+      {"hebel": "Bewertungs-Markup", "wirkung": "Sterne in der Suche und an der Kaufkante", "reife": "OFFEN"},
+      {"hebel": "Vergleichsseiten", "wirkung": "Vergleichsanfragen selbst beantworten", "reife": "OFFEN"}
+    ]
+  },
+  "sources": {
+    "eyebrow": "QUELLEN & METHODIK",
+    "headline": "Worauf dieser Audit beruht",
+    "groups": [
+      {"title": "Eigene Messungen", "items": [
+        {"label": "Crawl von beispielshop.example", "url": "https://beispielshop.example/"},
+        {"label": "Core Web Vitals der Startseite", "url": "https://pagespeed.web.dev/"}
+      ]},
+      {"title": "Öffentliche Quellen", "items": [
+        {"label": "Google Search Central, strukturierte Daten", "url": "https://developers.google.com/search/docs"},
+        {"label": "Schema.org, Product", "url": "https://schema.org/Product"}
+      ]}
+    ],
+    "methodik": "Gemessen wurde von außen, ohne Zugang zu Shop, Analytics oder Search Console. Zahlen aus Drittquellen sind Schätzungen und als solche benannt."
+  }
+}

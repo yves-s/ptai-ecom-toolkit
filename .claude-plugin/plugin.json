@@ -1,0 +1,10 @@
+{
+  "name": "ptai-ecom",
+  "displayName": "PtAI E-Com",
+  "version": "0.2.2",
+  "description": "E-Commerce-Audit, audit-light und Monats-Report für Shopify-Shops: Setup in zwei Teilen, Pulls aus Shopify, GA4, Search Console, PageSpeed, DataForSEO, Google Ads und GEO, Kunden-PDF und Wochen-Puls.",
+  "author": { "name": "Yves Schleich", "url": "https://path-to-ai.com" },
+  "homepage": "https://github.com/yves-s/ptai-ecom-toolkit",
+  "repository": "https://github.com/yves-s/ptai-ecom-toolkit",
+  "license": "MIT"
+}

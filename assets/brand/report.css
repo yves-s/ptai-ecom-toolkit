@@ -1,0 +1,986 @@
+/* Path to AI · report.css
+   Print-Stylesheet für den PDF-Report (A4, headless Chrome).
+   Abgeleitet aus dem Styleguide von Path to AI.
+   Vollständig self-contained: Fonts und Logo liegen relativ daneben,
+   kein Import aus dem Drive, kein Netz. */
+
+/* ---------- Fonts (liegen unter fonts/, Lizenzen in fonts/LICENSES/) ---------- */
+
+@font-face {
+  font-family: 'Archivo Black';
+  font-style: normal;
+  font-weight: 900;
+  font-display: block;
+  src: url("fonts/archivo-black.woff2") format('woff2');
+}
+
+@font-face {
+  font-family: 'Archivo Black';
+  font-style: italic;
+  font-weight: 900;
+  font-display: block;
+  src: url("fonts/archivo-black-italic.woff2") format('woff2');
+}
+
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-display: block;
+  src: url("fonts/inter-regular.woff2") format('woff2');
+}
+
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  font-display: block;
+  src: url("fonts/inter-semibold.woff2") format('woff2');
+}
+
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-weight: 500;
+  font-display: block;
+  src: url("fonts/jetbrains-mono-medium.woff2") format('woff2');
+}
+
+/* ---------- Tokens (Farben aus dem Styleguide von Path to AI) ---------- */
+
+:root {
+  --p2a-paper: #FFFFFF;        /* Grundfläche, immer weiß */
+  --p2a-surface: #F5F5F2;      /* ruhige Zweitfläche: Karten, Chrome */
+  --p2a-ink: #14150F;          /* Überschriften, Text, dunkle Panels */
+  --p2a-ink-soft: #5A5E57;     /* Fließtext sekundär, Captions */
+  --p2a-accent: #E2381B;       /* laut: große Typo, Flächen ohne Kleintext */
+  --p2a-accent-deep: #C62F14;  /* Buttons, Links, Kleintext, rote Flächen mit Text */
+  --p2a-blue: #1F3F8F;         /* ruhig: Labels, Links, Callout-Kante */
+  --p2a-blue-wash: #E6ECFA;    /* Callout-Fläche, Hinweis-Sektionen */
+
+  --p2a-bg: var(--p2a-paper);
+  --p2a-text: var(--p2a-ink);
+  --p2a-rule: rgba(20, 21, 15, 0.13); /* Hairlines */
+
+  --p2a-font-display: 'Archivo Black', 'Archivo', system-ui, sans-serif;
+  --p2a-font-body: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --p2a-font-mono: 'JetBrains Mono', ui-monospace, 'SFMono-Regular', monospace;
+}
+
+/* ---------- Seite (A4) ---------- */
+
+/* Vollflächiger Hintergrund: Chrome malt beim Druck nichts in die
+   @page-Ränder, weder Body- noch Wurzel-Hintergrund, weder fixiert noch
+   absolut positioniert (alles geprüft). Deshalb hat die Seite keinen Rand.
+   Der Satzspiegel kommt aus dem Innenabstand von .content, nicht von body:
+   so kann die Rückseite als Geschwister randlos über die volle Seite laufen,
+   ohne den Innenabstand mit negativen Werten wieder aufheben zu müssen.
+   box-decoration-break: clone wiederholt diesen Innenabstand auf jedem
+   Seitenfragment, sonst klebt der Text ab Seite zwei am Papierrand. */
+@page {
+  size: A4;
+  margin: 0;
+}
+
+html {
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+  background: var(--p2a-bg);
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: var(--p2a-font-body);
+  font-weight: 400;
+  font-size: 10.5pt;
+  line-height: 1.6;
+  color: var(--p2a-text);
+  background: var(--p2a-bg);
+}
+
+/* Inhalts-Container: trägt den Satzspiegel auf jeder Seite. Alles außer der
+   Rückseite liegt hier drin. */
+.content {
+  padding: 18mm 16mm 20mm;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+}
+
+/* ---------- Typografie (Styleguide: Archivo 900, Kursiv ist Stimme, Aufrecht ist Struktur) ---------- */
+
+h1, h2, h3 {
+  font-family: var(--p2a-font-display);
+  font-weight: 900;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  color: var(--p2a-ink);
+  break-after: avoid;
+}
+
+/* H1 ist die Stimme (Report-Titel), H2/H3 sind Struktur (Kapitel, Tabellenköpfe): aufrecht. */
+h1 { font-style: italic; font-size: 34pt; line-height: 1.05; margin: 0 0 12pt; }
+h2 { font-size: 22pt; margin: 24pt 0 8pt; }
+h3 { font-size: 14pt; margin: 16pt 0 6pt; }
+
+p { margin: 0 0 8pt; }
+
+strong { font-weight: 600; } /* Inter SemiBold, bleibt in Ink */
+
+a {
+  color: var(--p2a-accent-deep);
+  text-decoration: none;
+}
+
+/* Signatur-Move: Headline endet auf Punkt in Accent.
+   <h1>Gefunden. Empfohlen. Gekauft<span class="dot">.</span></h1> */
+.dot { color: var(--p2a-accent); }
+
+/* Eyebrow / Sektions-Label: Mono, Versalien, gesperrt */
+.eyebrow {
+  font-family: var(--p2a-font-mono);
+  font-weight: 500;
+  font-size: 8.5pt;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--p2a-blue);
+  margin: 0 0 4pt;
+  /* Ein Label darf nie als letzte Zeile einer Seite stehen: der Leser blaettert
+     um und sucht, wozu es gehoerte. Belegt am 07.09.2026, Seite 5 endete mit
+     "BEFUNDE" und der erste Befund stand auf Seite 6. */
+  break-after: avoid;
+  page-break-after: avoid;
+}
+
+/* Optional: kurze Akzent-Linie vor dem Eyebrow (Standard-Einstieg einer Sektion) */
+.eyebrow--line::before {
+  content: "";
+  display: inline-block;
+  width: 18pt;
+  height: 1.5pt;
+  background: var(--p2a-accent);
+  margin-right: 6pt;
+  vertical-align: middle;
+}
+
+/* ---------- Kapitel-Header mit Logo ---------- */
+
+.chapter-header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 12pt;
+  padding-bottom: 6pt;
+  border-bottom: 1pt solid var(--p2a-ink);
+  margin-bottom: 14pt;
+  break-after: avoid;
+}
+
+.chapter-header h2 { margin: 0; }
+
+/* Wortmarke als <img src="logo.svg">; nie unter 40 px Breite */
+.logo { height: 14pt; width: auto; }
+
+/* ---------- Tabellen ---------- */
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 8pt 0 14pt;
+  font-size: 9.5pt;
+}
+
+thead { display: table-header-group; } /* Kopf wiederholt sich beim Seitenumbruch */
+
+th {
+  font-family: var(--p2a-font-mono);
+  font-weight: 500;
+  font-size: 8pt;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  text-align: left;
+  color: var(--p2a-blue);
+  padding: 4pt 8pt 4pt 0;
+  border-bottom: 1pt solid var(--p2a-ink);
+}
+
+td {
+  padding: 4pt 8pt 4pt 0;
+  border-bottom: 0.6pt solid var(--p2a-rule);
+  vertical-align: top;
+}
+
+tr { break-inside: avoid; }
+
+th.num, td.num {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+/* Kritischer Wert in einer Zelle (negativer Bestand, Ausfall, Wert der Arbeit
+   kostet). Sparsam einsetzen: markiert wird die Zahl, die eine Maßnahme
+   auslöst, nicht jede Zahl, die kleiner geworden ist. */
+td.neg {
+  background: rgba(198, 47, 20, 0.12);
+  box-shadow: inset 2pt 0 0 var(--p2a-accent-deep);
+}
+
+/* ---------- KPI-Kacheln (Kennzahl-Blöcke) ---------- */
+
+.kpi-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10pt;
+  margin: 10pt 0 16pt;
+}
+
+.kpi-grid--4 { grid-template-columns: repeat(4, 1fr); }
+
+/* Drei Spalten, zwei Reihen: die Regelform der Kennzahlenleiste seit dem
+   07.09.2026. Vier Millionenbeträge nebeneinander brechen mitten in der Zahl
+   um, das Euro-Zeichen landet in Zeile zwei. */
+.kpi-grid--3 { grid-template-columns: repeat(3, 1fr); gap: 14pt 18pt; }
+.kpi-grid--3 .value { font-size: 26pt; }
+
+/* Eine fehlende Kennzahl wird gezeigt, aber nicht geschrien: "nicht erhoben"
+   in 26pt zieht auf dem Deckblatt mehr Blick auf sich als jede echte Zahl. */
+.kpi .value--leer { font-size: 13pt; letter-spacing: 0; }
+
+/* Die groessten Probleme als Zahl, nicht als Satz. Die Bauform kommt aus
+   einem frueheren Audit, wo sie funktioniert hat: die Zahl IST das
+   Problem ("3 Versandkostenschwellen, gleichzeitig"). Deutlich groesser als
+   eine Kennzahl-Kachel, weil sie den Blick zuerst bekommen soll, und in der
+   Akzentfarbe, weil hier Handlungsbedarf steht. */
+.problem-grid {
+  display: flex;
+  gap: 20pt;
+  margin: 6pt 0 18pt;
+}
+.problem {
+  flex: 1;
+  border-top: 2pt solid var(--p2a-accent-deep);
+  padding-top: 8pt;
+  break-inside: avoid;
+}
+.problem .value {
+  font-family: var(--p2a-font-display);
+  font-size: 30pt;
+  line-height: 1;
+  letter-spacing: -0.02em;
+  margin: 0;
+}
+/* Der Bezug klein neben der Zahl, nicht in ihr. "31 von 1.480" im
+   Display-Schnitt bricht mitten in der Zahl um und zerlegt die Form. Der
+   Fehler steht schon in der audit-light-Skill, und er ist am 07.09.2026
+   trotzdem noch einmal passiert. */
+.problem .value .unit {
+  font-family: var(--p2a-font-body);
+  font-weight: 600;
+  font-size: 13pt;
+  letter-spacing: 0;
+  color: var(--p2a-ink-soft);
+  margin-left: 4pt;
+}
+.problem .label {
+  font-size: 11pt;
+  font-weight: 600;
+  line-height: 1.25;
+  margin: 6pt 0 3pt;
+}
+.problem .caption {
+  font-size: 8.5pt;
+  line-height: 1.45;
+  color: var(--p2a-ink-soft);
+  margin: 0;
+}
+.problem .ref {
+  font-family: var(--p2a-font-mono);
+  font-size: 7.5pt;
+  letter-spacing: 0.06em;
+  white-space: nowrap;
+}
+
+/* Health Score. Die Bauform kommt aus dem audit-light, wo sie funktioniert:
+   die grosse Zahl heute, daneben das Ziel nach Umsetzung, darunter je Bereich
+   ein Balken mit Zielmarke.
+
+   ES GIBT KEINEN BRANCHEN-BENCHMARK dafuer, und deshalb steht auch keiner da.
+   Verglichen wird gegen 100 (ein Shop ohne Befunde), gegen das Ziel und, ab
+   dem naechsten Lauf, gegen den heutigen Wert. Das ist der Zweck der Baseline. */
+.score-total {
+  display: flex;
+  align-items: baseline;
+  gap: 14pt;
+  flex-wrap: wrap;
+  border-top: 2pt solid var(--p2a-ink);
+  padding-top: 8pt;
+  margin: 14pt 0 4pt;
+}
+.score-total .value {
+  font-family: var(--p2a-font-display);
+  font-size: 44pt;
+  line-height: 1;
+  letter-spacing: -0.03em;
+  margin: 0;
+}
+.score-total .value .unit,
+.score .value .unit,
+.section-score .unit {
+  font-family: var(--p2a-font-body);
+  font-weight: 600;
+  color: var(--p2a-ink-soft);
+  letter-spacing: 0;
+}
+.score-total .value .unit { font-size: 17pt; }
+.score-total .arrow {
+  font-family: var(--p2a-font-display);
+  font-size: 20pt;
+  color: var(--p2a-accent-deep);
+  margin: 0;
+}
+.score-total .arrow::before { content: "\2192\00a0"; }
+.score-total .label {
+  font-family: var(--p2a-font-mono);
+  font-size: 8pt;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--p2a-blue);
+  margin: 0;
+  flex-basis: 100%;
+}
+
+.score-grid { display: flex; gap: 18pt; margin: 12pt 0 18pt; }
+.score { flex: 1; break-inside: avoid; }
+.score .label {
+  font-family: var(--p2a-font-mono);
+  font-size: 8pt;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--p2a-blue);
+  margin: 0 0 2pt;
+}
+.score .value {
+  font-family: var(--p2a-font-display);
+  font-size: 24pt;
+  line-height: 1;
+  margin: 0;
+}
+.score .value .unit { font-size: 11pt; }
+.score .caption {
+  font-size: 8pt;
+  line-height: 1.4;
+  color: var(--p2a-ink-soft);
+  margin: 4pt 0 0;
+}
+/* Der Balken zeigt den Stand, die Marke das Ziel. Kein Ampelgruen: die Farbe
+   ist die Marke, nicht eine zweite Bewertung neben der Zahl. */
+.scorebar {
+  position: relative;
+  height: 4pt;
+  background: var(--p2a-surface);
+  margin: 5pt 0 0;
+}
+.scorebar span {
+  display: block;
+  height: 100%;
+  background: var(--p2a-blue);
+}
+.scorebar i {
+  position: absolute;
+  top: -2pt;
+  width: 1.5pt;
+  height: 8pt;
+  background: var(--p2a-accent);
+}
+
+/* Der Score einer Sektion, als eigener Block mit Balken. Als blosse Zeile
+   ("38/100 ZIEL 89") ging er zwischen Kernaussage und Tabelle unter. */
+.section-score {
+  border-top: 1.5pt solid var(--p2a-ink);
+  padding-top: 7pt;
+  margin: 0 0 14pt;
+  max-width: 300pt;
+  break-inside: avoid;
+}
+.section-score .label {
+  font-family: var(--p2a-font-mono);
+  font-size: 8pt;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--p2a-blue);
+  margin: 0 0 2pt;
+}
+.section-score .value {
+  font-family: var(--p2a-font-display);
+  font-size: 26pt;
+  line-height: 1;
+  margin: 0;
+}
+.section-score .value .unit { font-size: 12pt; }
+.section-score .value .arrow {
+  font-family: var(--p2a-font-display);
+  font-size: 15pt;
+  color: var(--p2a-accent-deep);
+  margin-left: 10pt;
+}
+.section-score .value .arrow::before { content: "→\00a0"; }
+.section-score .caption {
+  font-size: 8pt;
+  line-height: 1.4;
+  color: var(--p2a-ink-soft);
+  margin: 5pt 0 0;
+}
+
+/* Die Kernaussage einer Sektion, direkt unter der Überschrift und vor den
+   Zahlen. IBCS SA 3.2: "say message first". Eine Kapitelüberschrift benennt
+   den Gegenstand, dieser Satz sagt, was gefunden wurde. */
+.section-message {
+  font-family: var(--p2a-font-display);
+  font-size: 14pt;
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+  margin: 0 0 10pt;
+  max-width: 46ch;
+}
+
+/* Der Zeitraum steht einmal über der Leiste, nicht in jeder Bildunterschrift. */
+.kpi-period {
+  font-family: var(--p2a-font-mono);
+  font-size: 8.5pt;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--p2a-blue);
+  margin: 14pt 0 0;
+}
+
+/* Zwei Spalten für lange Zahlen. Vier Kacheln mit Millionenbeträgen brechen
+   nebeneinander um; nach unten ist auf der ersten Seite ohnehin Platz. */
+.kpi-grid--2 { grid-template-columns: repeat(2, 1fr); gap: 14pt 18pt; }
+.kpi-grid--2 .value { font-size: 30pt; }
+
+.kpi {
+  border-top: 1pt solid var(--p2a-ink); /* dünne Oberlinie */
+  padding-top: 6pt;
+  break-inside: avoid;
+}
+
+.kpi .label {
+  font-family: var(--p2a-font-mono);
+  font-weight: 500;
+  font-size: 8pt;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--p2a-blue);
+  margin: 0 0 2pt;
+}
+
+.kpi .value {
+  font-family: var(--p2a-font-display);
+  font-weight: 900;
+  font-size: 26pt;
+  line-height: 1.1;
+  color: var(--p2a-ink);
+}
+
+/* 26pt ist für das dichte 3er/4er-Grid gedacht. Der Styleguide setzt
+   Kennzahlen mit 40 bis 64 pt: dafür die Hero-Variante nehmen. */
+.kpi--hero .value { font-size: 44pt; }
+
+.kpi .unit {
+  font-family: var(--p2a-font-body);
+  font-size: 9pt;
+  font-weight: 400;
+  margin-left: 2pt;
+}
+
+.kpi .caption {
+  font-size: 8pt;
+  line-height: 1.4;
+  margin: 3pt 0 0;
+}
+
+/* Schmale Fortschrittsleiste in Blue mit Accent-Zielmarke */
+.kpi .bar {
+  position: relative;
+  height: 3pt;
+  background: var(--p2a-blue-wash);
+  margin-top: 5pt;
+}
+
+.kpi .bar-fill {
+  position: absolute;
+  inset: 0 auto 0 0;
+  background: var(--p2a-blue);
+}
+
+.kpi .bar-target {
+  position: absolute;
+  top: -1.5pt;
+  bottom: -1.5pt;
+  width: 1.5pt;
+  background: var(--p2a-accent);
+}
+
+/* ---------- Callouts ---------- */
+
+.callout-dark {
+  background: var(--p2a-ink);
+  color: var(--p2a-paper);
+  padding: 10pt 12pt;
+  margin: 10pt 0;
+  break-inside: avoid;
+}
+
+.callout-dark .plus { color: var(--p2a-accent); }
+.callout-dark a { color: var(--p2a-accent); }
+
+/* ---------- Schluss-Panel ----------
+   Dunkle Ink-Fläche als Rückseite des Reports, laut Styleguide die
+   Fläche für Cover, Footer und Callout. Die negativen Außenabstände ziehen das
+   Panel über den Satzspiegel hinaus bis an die Papierkante; sie spiegeln den
+   Innenabstand von body und müssen mitwandern, wenn der sich ändert. */
+
+.closing {
+  background: var(--p2a-ink);
+  color: var(--p2a-paper);
+  /* Volle Rückseite: eigene Seite, randlos bis an alle vier Papierkanten. Die
+     negativen Außenabstände heben den Innenabstand von body auf, die Höhe ist
+     die A4-Höhe. Ändert sich das Papierformat, wandert dieser Wert mit. */
+  break-before: page;
+  break-inside: avoid;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 30mm 16mm 22mm;
+  height: 297mm; /* A4-Höhe; wandert mit, falls das Format sich ändert */
+  display: flex;
+  flex-direction: column;
+}
+
+.closing .logo-reversed {
+  height: 18pt;
+  width: auto;
+  align-self: flex-start; /* sonst zentriert die Flex-Spalte die Wortmarke */
+  margin-bottom: 26pt;
+}
+
+.closing .eyebrow { color: var(--p2a-accent); }
+.closing .eyebrow--line::before { background: var(--p2a-accent); }
+
+.closing p { margin: 0 0 8pt; max-width: 40em; }
+
+.closing a { color: var(--p2a-accent); }
+
+/* Kontaktzeilen: dieselbe Zeilenform wie die Zusammenfassung, auf der dunklen
+   Fläche mit den gedämpften Werten der Fußzeile statt Blau und Ink. */
+.closing .summary {
+  max-width: 120mm;
+  margin: 18pt 0 0;
+  border-top-color: rgba(255, 255, 255, 0.28);
+}
+
+.closing .summary-row { border-bottom-color: rgba(255, 255, 255, 0.28); }
+.closing .summary-label { color: rgba(255, 255, 255, 0.6); }
+.closing .summary-value { color: var(--p2a-paper); }
+
+/* Herkunftszeile: klein und gedämpft. Path to AI steht hier als Herkunft des
+   Plugins, nicht als Absender. Direkt unter dem Logo, wenn keine Einstellung
+   gesetzt ist, ohne den Abstand zum Kontaktblock. */
+.closing .origin {
+  margin: 22pt 0 0;
+  font-size: 8.5pt;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.closing .logo-reversed + .origin { margin-top: 0; }
+
+/* Fußzeile innerhalb des Panels, gedämpft gegen den Fließtext */
+.closing .panel-footer {
+  display: flex;
+  justify-content: space-between;
+  gap: 12pt;
+  margin-top: auto; /* schiebt die Zeile an die untere Kante der Rückseite */
+  padding-top: 22pt;
+  font-family: var(--p2a-font-mono);
+  font-size: 7.5pt;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.callout-light {
+  background: var(--p2a-blue-wash);
+  color: var(--p2a-ink);
+  padding: 10pt 12pt;
+  margin: 10pt 0;
+  break-inside: avoid;
+}
+
+/* ---------- Footer und Umbrüche ---------- */
+
+.page-footer {
+  display: flex;
+  justify-content: space-between;
+  font-family: var(--p2a-font-mono);
+  font-weight: 500;
+  font-size: 8pt;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--p2a-blue);
+}
+
+.page-break { break-before: page; }
+.no-break { break-inside: avoid; }
+
+/* ---------- Report-Skelett (Playbook "Reports schreiben", die acht Elemente) ----------
+
+   Alles ab hier ist am 07.09.2026 dazugekommen, weil das Audit-PDF auf das
+   Skelett aus dem Report-Playbook von Path to AI umgebaut wurde und
+   fünf der acht Elemente in dieser Datei keine Entsprechung hatten: Einstieg,
+   Zusammenfassung, Inhalt, Nächster Schritt, Quellen. Dazu die Sektions-
+   Erklärzeile und der Wirkungs-Chip aus dem freigegebenen Muster.
+
+   Jede Regel hier ist aus einem Token oben abgeleitet, keine neue Farbe und
+   kein neuer Grad. Der Monats-Report kann dieselben Klassen benutzen, deshalb
+   stehen sie hier und nicht im Template. */
+
+/* .cover und .meta lagen bis dahin doppelt in beiden Templates. Ein Kopf, der
+   in zwei Dateien gepflegt wird, sieht nach der zweiten Änderung verschieden
+   aus. */
+.cover { margin: 0 0 24pt; }
+.cover h1 { margin-top: 14pt; }
+
+/* Dokumentzeile unter der Headline: Dokumentart, Gegenstand, Stand. */
+.meta {
+  font-family: var(--p2a-font-mono);
+  font-weight: 500;
+  font-size: 8.5pt;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--p2a-ink-soft);
+  margin: 0 0 4pt;
+}
+
+/* Einstieg: vier Sätze unter der Dokumentzeile, eine Stufe über dem
+   Fließtext. Inter trägt hier 400, nicht 500: die Datei bindet nur Regular
+   und SemiBold ein, und ein nicht eingebundener Schnitt wird vom Renderer
+   synthetisch verzerrt statt ersetzt. */
+.lead {
+  font-size: 12pt;
+  line-height: 1.45;
+  color: var(--p2a-text);
+  margin: 0 0 16pt;
+  max-width: 62em;
+}
+
+/* Zusammenfassung: fünf feste Zeilen, Label links, Aussage rechts. Die Labels
+   sind die Struktur und bleiben stehen, siehe Playbook. */
+.summary {
+  border-top: 1px solid var(--p2a-rule);
+  margin: 0 0 20pt;
+  break-inside: avoid;
+}
+
+.summary-row {
+  display: grid;
+  grid-template-columns: 38mm 1fr;
+  gap: 0 10pt;
+  padding: 7pt 0;
+  border-bottom: 1px solid var(--p2a-rule);
+}
+
+.summary-label {
+  font-family: var(--p2a-font-mono);
+  font-weight: 500;
+  font-size: 8pt;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--p2a-blue);
+  padding-top: 2pt;
+}
+
+.summary-value {
+  font-size: 10.5pt;
+  line-height: 1.5;
+  color: var(--p2a-text);
+}
+
+.summary-value p { margin: 0; }
+
+/* Inhalt: nummerierte Sprungmarken. Die Nummer steht, weil die Reihenfolge
+   etwas bedeutet (Messung vor Befund vor Maßnahme), nicht als Deko. */
+.toc {
+  border-top: 1px solid var(--p2a-rule);
+  margin: 0 0 4pt;
+  break-inside: avoid;
+}
+
+.toc-row {
+  display: grid;
+  grid-template-columns: 10mm 1fr;
+  gap: 0 8pt;
+  padding: 5pt 0;
+  border-bottom: 1px solid var(--p2a-rule);
+}
+
+.toc-num {
+  font-family: var(--p2a-font-mono);
+  font-weight: 500;
+  font-size: 9pt;
+  color: var(--p2a-blue);
+  font-variant-numeric: tabular-nums;
+}
+
+.toc-title { font-size: 10pt; line-height: 1.45; color: var(--p2a-text); }
+.toc-title span { color: var(--p2a-ink-soft); } /* die Zeile, was drinsteht */
+
+/* Erklärzeile unter einer Sektionsüberschrift: was der Abschnitt enthält und
+   wobei er hilft. Sekundärer Fließtext, hängt optisch an der Überschrift. */
+.section-intro {
+  font-size: 10pt;
+  line-height: 1.5;
+  color: var(--p2a-ink-soft);
+  max-width: 46em;
+  margin: 0 0 14pt;
+}
+
+/* Wirkungs-Chip an der Sektionsüberschrift. Drei Stufen, und Rot trägt
+   ausschließlich Handlungsbedarf, nie Betonung (Styleguide, Abschnitt 3). */
+.impact {
+  display: inline-block;
+  font-family: var(--p2a-font-mono);
+  font-weight: 500;
+  font-size: 7.5pt;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 2pt 6pt;
+  border: 1px solid var(--p2a-rule);
+  color: var(--p2a-ink-soft);
+  margin: 0 0 6pt;
+}
+
+.impact--high { border-color: var(--p2a-accent-deep); color: var(--p2a-accent-deep); }
+.impact--medium { border-color: var(--p2a-blue); color: var(--p2a-blue); }
+
+/* Befund: große Zahl links, Text rechts. Die Zahl steht in der
+   Display-Schrift und aufrecht, die Kursive bleibt der Cover-Headline. */
+.finding {
+  display: grid;
+  grid-template-columns: 34mm 1fr;
+  gap: 0 12pt;
+  padding: 10pt 0;
+  border-top: 1px solid var(--p2a-rule);
+  break-inside: avoid;
+}
+
+.finding-figure {
+  font-family: var(--p2a-font-display);
+  font-weight: 900;
+  font-size: 24pt;
+  line-height: 1;
+  letter-spacing: -0.02em;
+  color: var(--p2a-ink);
+  font-variant-numeric: tabular-nums;
+}
+
+/* Der Nenner hängt klein an der Zahl: Zähler groß, Bezug klein, ein Block. */
+.finding-figure .of {
+  display: block;
+  font-family: var(--p2a-font-mono);
+  font-weight: 500;
+  font-size: 7.5pt;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  line-height: 1.3;
+  color: var(--p2a-ink-soft);
+  margin-top: 4pt;
+}
+
+.finding-figure--high { color: var(--p2a-accent-deep); }
+
+/* Einspaltiger Befund: Kennung, ein Satz als Überschrift, die Zahlen als
+   Tabelle, dann was folgt. Für alles, was keine einzelne Leitzahl hat, also
+   für die grosse Mehrheit. Die zweispaltige Form darüber bleibt dem einen
+   tragenden Befund je Sektion vorbehalten. */
+.finding-block {
+  padding: 10pt 0 2pt;
+  border-top: 1px solid var(--p2a-rule);
+  break-inside: avoid;
+}
+.finding-block > .eyebrow { margin: 0 0 2pt; }
+.finding-block h3 { margin: 0 0 6pt; font-size: 12pt; line-height: 1.3; }
+.finding-block table { margin: 0 0 8pt; }
+.finding-block p { margin: 0 0 6pt; }
+
+/* Eine Maßnahme ist ein Auftrag, keine Tabellenzeile. Sie trägt deshalb ihre
+   Herkunft, ihre Wirkung, den Ort der Arbeit, die Zuständigkeit und die
+   Prüfregel. Beanstandet am 07.09.2026: "Ich kann das doch jetzt nicht
+   einfach in Auftrag geben, weil ich gar nicht verstehe, was das heisst." */
+.measure {
+  padding: 12pt 0 4pt;
+  border-top: 1px solid var(--p2a-rule);
+  break-inside: avoid;
+}
+.measure > .eyebrow { margin: 0 0 3pt; }
+
+/* Schweregrad als schmale Kante links, nicht als Farbfläche. Rot bleibt der
+   Abweichung vorbehalten, deshalb trägt nur "hoch" die Akzentfarbe. */
+.finding-block--hoch { border-left: 2pt solid var(--p2a-accent); padding-left: 8pt; }
+.finding-block--mittel { border-left: 2pt solid var(--p2a-rule); padding-left: 8pt; }
+.finding-block--gering { border-left: 2pt solid transparent; padding-left: 8pt; }
+
+/* Diagramme sind reines SVG im Dokument. Kein Chart-Paket: headless Chrome
+   rendert unter strenger CSP, und was erst im Browser gerechnet wird, ist im
+   Druck ein leeres Rechteck. */
+figure.chart {
+  margin: 10pt 0 14pt;
+  break-inside: avoid;
+}
+figure.chart svg { display: block; width: 100%; height: auto; }
+.measure h3 { margin: 0 0 8pt; font-size: 13pt; line-height: 1.3; }
+.measure .summary { margin: 0; border-top: none; }
+.measure .summary-row { padding: 5pt 0; }
+.measure .summary-label { font-size: 7.5pt; }
+.measure .summary-value { font-size: 10pt; }
+
+.finding-body h3 { margin: 0 0 4pt; font-size: 12pt; }
+.finding-body p { margin: 0 0 4pt; }
+
+/* Belegzeile unter einem Befund oder in einem hellen Kasten: Quelle, Umfang,
+   Stand. Mono, weil eine Quellenangabe eine Datenzeile ist. */
+.evidence {
+  font-family: var(--p2a-font-mono);
+  font-weight: 500;
+  font-size: 7.5pt;
+  letter-spacing: 0.04em;
+  line-height: 1.5;
+  color: var(--p2a-ink-soft);
+  margin: 4pt 0 0;
+}
+
+/* Nächster Schritt: die eine Handlung. Höchstens einer je Seite, sonst
+   verliert der rote Balken seine Bedeutung. */
+.next-step {
+  border-left: 3px solid var(--p2a-accent-deep);
+  padding: 10pt 0 10pt 12pt;
+  margin: 16pt 0;
+  break-inside: avoid;
+}
+
+.next-step-label {
+  font-family: var(--p2a-font-mono);
+  font-weight: 500;
+  font-size: 8pt;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--p2a-accent-deep);
+  margin: 0 0 4pt;
+}
+
+.next-step p { margin: 0 0 4pt; }
+
+/* Quellen: je Zeile Werkzeug, Umfang, Stand. */
+.sources {
+  border-top: 1px solid var(--p2a-rule);
+  margin: 0 0 8pt;
+}
+
+.source-row {
+  display: grid;
+  grid-template-columns: 32mm 1fr 28mm;
+  gap: 0 8pt;
+  padding: 4pt 0;
+  border-bottom: 1px solid var(--p2a-rule);
+  font-family: var(--p2a-font-mono);
+  font-weight: 500;
+  font-size: 8pt;
+  line-height: 1.45;
+  color: var(--p2a-ink-soft);
+}
+
+.source-row .tool { color: var(--p2a-blue); }
+.source-row .as-of { text-align: right; font-variant-numeric: tabular-nums; }
+
+/* ---------- Fußnote an einer Zahl ----------
+
+   Der Notausgang für den einen Fall, den keine Spalte trägt: ein Wert, den
+   der Leser ohne Anmerkung in der falschen Größenordnung liest. Alles andere
+   trägt die Struktur, die schon da ist: eine Spalte "Grund", die Notiz einer
+   Kachel, der Abschnitt über die Lücken.
+
+   Gebaut am 07.09.2026 nach Yves' Vorschlag ("mach irgendwie eine 1 dran,
+   mach eine Fußnote oder einen Stern"), nachdem ein freistehender heller
+   Kasten dieselbe Aufgabe übernommen und dabei die auffälligste Stelle einer
+   Sektion mit einer Randbedingung belegt hatte. */
+
+.fn {
+  font-family: var(--p2a-font-mono);
+  font-weight: 500;
+  /* 7.5pt ist die kleinste Stufe, die diese Datei schon führt (.impact,
+     .evidence, .finding-figure .of). Kein neuer Grad. */
+  font-size: 7.5pt;
+  /* Blau trägt alles Leise (Styleguide, Abschnitt 3). Eine Fußnote ist kein
+     Handlungsbedarf, also nie Rot. */
+  color: var(--p2a-blue);
+  /* Nicht `super`: das zieht den Zeilenkasten der Tabellenzeile auf, und die
+     markierte Zeile wird höher als ihre Nachbarn. Gesetzter Wert, nicht
+     abgeleitet. */
+  vertical-align: baseline;
+  position: relative;
+  top: -0.32em;
+  font-variant-numeric: tabular-nums;
+}
+
+/* Die Anmerkung steht direkt unter ihrer Tabelle. Im Druck gibt es kein
+   Zurückblättern: eine Marke, die über einen Seitenumbruch hinweg auf nichts
+   zeigt, ist schlimmer als keine Marke. */
+.table-note {
+  font-family: var(--p2a-font-body);
+  font-size: 8.5pt;
+  line-height: 1.5;
+  color: var(--p2a-ink-soft);
+  max-width: 46em;
+  margin: 0 0 14pt;
+  break-inside: avoid;
+  break-before: avoid;
+}
+
+/* Eine Tabelle mit Anmerkung schließt enger nach unten, damit die Anmerkung
+   sichtbar zu ihr gehört. Als Modifier statt als negative Marge am Block:
+   eine negative Marge hängt daran, dass die Margen kollabieren, und das hört
+   auf, sobald jemand die Anmerkung in ein weiteres div wickelt. */
+table.has-note { margin-bottom: 6pt; }
+
+.table-note p { margin: 0 0 4pt; }
+.table-note p:last-child { margin-bottom: 0; }
+
+.fn-key {
+  font-family: var(--p2a-font-mono);
+  font-weight: 500;
+  font-size: 8pt;
+  color: var(--p2a-blue);
+  /* 4pt wie der Innenabstand einer Tabellenzelle in dieser Datei. */
+  margin-right: 4pt;
+  font-variant-numeric: tabular-nums;
+}
+
+/* Die Einordnung einer Zahl: woran gemessen, was waere normal. Optisch vom
+   Fliesstext abgesetzt, weil sie eine andere Frage beantwortet als der Rest
+   des Befunds, und weil ein Leser sie beim Ueberfliegen finden koennen soll. */
+.benchmark {
+  background: var(--p2a-blue-wash);
+  border-left: 2.5pt solid var(--p2a-blue);
+  padding: 6pt 9pt;
+  margin: 8pt 0;
+  font-size: 9.5pt;
+  break-inside: avoid;
+}
+.benchmark strong {
+  font-family: var(--p2a-font-mono);
+  font-size: 7.5pt;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--p2a-blue);
+  display: block;
+  margin-bottom: 2pt;
+  font-weight: 400;
+}

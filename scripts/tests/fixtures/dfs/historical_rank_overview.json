@@ -1,0 +1,101 @@
+{
+  "version": "0.1.20260902",
+  "status_code": 20000,
+  "status_message": "Ok.",
+  "time": "0.1423 sec.",
+  "cost": 0.1272,
+  "tasks_count": 1,
+  "tasks_error": 0,
+  "tasks": [
+    {
+      "id": "09070755-2264-0406-0000-fc7386629340",
+      "status_code": 20000,
+      "status_message": "Ok.",
+      "time": "0.1129 sec.",
+      "cost": 0.1272,
+      "result_count": 1,
+      "path": [
+        "v3",
+        "dataforseo_labs",
+        "google",
+        "historical_rank_overview",
+        "live"
+      ],
+      "data": {
+        "api": "dataforseo_labs",
+        "function": "historical_rank_overview",
+        "se_type": "google",
+        "target": "path-to-ai.com",
+        "location_code": 2276,
+        "language_code": "de",
+        "tag": "dev/2026-09-07/fixtures"
+      },
+      "result": [
+        {
+          "se_type": "google",
+          "target": "path-to-ai.com",
+          "location_code": 2276,
+          "language_code": "de",
+          "total_count": 6,
+          "items_count": 6,
+          "items": [
+            {
+              "se_type": "google",
+              "year": 2026,
+              "month": 8,
+              "metrics": {
+                "organic": null,
+                "paid": null
+              }
+            },
+            {
+              "se_type": "google",
+              "year": 2026,
+              "month": 7,
+              "metrics": {
+                "organic": null,
+                "paid": null
+              }
+            },
+            {
+              "se_type": "google",
+              "year": 2026,
+              "month": 6,
+              "metrics": {
+                "organic": null,
+                "paid": null
+              }
+            },
+            {
+              "se_type": "google",
+              "year": 2026,
+              "month": 5,
+              "metrics": {
+                "organic": null,
+                "paid": null
+              }
+            },
+            {
+              "se_type": "google",
+              "year": 2026,
+              "month": 4,
+              "metrics": {
+                "organic": null,
+                "paid": null
+              }
+            },
+            {
+              "se_type": "google",
+              "year": 2026,
+              "month": 3,
+              "metrics": {
+                "organic": null,
+                "paid": null
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

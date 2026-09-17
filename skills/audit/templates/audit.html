@@ -1,0 +1,567 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<title>__BRAND__ · E-Com-Audit __RUN_LABEL__</title>
+<!--
+  Platzhalter, beim Render zu ersetzen (Skill audit, Phase 4). Die Marker
+  stehen nur im Markup unten (Form: doppelter Unterstrich, Name, doppelter
+  Unterstrich); dieser Kommentar nennt sie bewusst nicht wörtlich, damit ein
+  globales Ersetzen ihn nicht anfasst. Welcher Platzhalter aus welchem
+  Quellfeld kommt, steht in skills/audit/SKILL.md, Phase 4. Hier steht nur die
+  Form, damit beide Seiten nicht auseinanderlaufen.
+
+  Headless Chrome löst keine Plugin-relativen Pfade auf: CSS- und Logo-Pfad
+  müssen absolut sein.
+
+  DER AUFBAU FOLGT DEM SKELETT AUS DEM REPORT-PLAYBOOK
+  (Report-Playbook von Path to AI, Abschnitt "Das Skelett"), acht
+  Elemente in fester Reihenfolge: Kopf, Einstieg, Kennzahlenleiste,
+  Zusammenfassung, Inhalt, Fachsektionen, Nächster Schritt, Quellen.
+
+  EINE SEKTION JE FACHBEREICH, seit 07.09.2026. Davor standen die Zahlen in
+  einer einzigen Baseline-Tabelle und die Befunde als ein Block dahinter. Der
+  Leser musste zwischen beiden blättern, und die Baseline war eine Zeile je
+  Bereich: "SEO Suche · Klicks · 120.000". Yves: "Was soll das heißen?" Jetzt
+  trägt jede Sektion ihre eigenen Zahlen und direkt darunter die Befunde, die
+  aus ihnen folgen.
+
+  WAS IM TEMPLATE FEST STEHT UND WAS DER LAUF FÜLLT. Fest sind alle
+  Überschriften, alle Labels der Zusammenfassung, die Erklärzeile unter jeder
+  Überschrift und die Beschriftung der vier Kennzahl-Kacheln. Sie gelten für
+  jeden Shop und werden nie je Lauf neu formuliert: eine Zeile, die jeder Lauf
+  selbst schreibt, driftet. Der Lauf füllt ausschließlich Zahlen, Namen und
+  die Sektionsinhalte.
+-->
+<link rel="stylesheet" href="__CSS_PATH__">
+<style>
+  /* Template-lokale Regeln. Alles Wiederverwendbare liegt in report.css, hier
+     steht nur, was ausschließlich dieses Dokument braucht. */
+  .logo { min-width: 40px; } /* Wortmarke nie unter 40 px Breite */
+</style>
+</head>
+<body>
+
+<div class="content">
+
+<!-- ======================= 1 · Kopf ======================= -->
+<header class="cover">
+  <div class="chapter-header">
+    <p class="eyebrow eyebrow--line">E-Com-Audit</p>
+    <img class="logo" src="__LOGO_PATH__" alt="Path to AI">
+  </div>
+  <h1>__COVER_HEADLINE__<span class="dot">.</span></h1>
+  <p class="meta">__BRAND__ · Daten bis __RUN_LABEL__ · erstellt am __GENERATED_DATE__</p>
+</header>
+
+<!-- ======================= 2 · Einstieg ======================= -->
+<p class="lead">__INTRO__</p>
+
+<!-- ================= 3b · Die groessten Probleme ================= -->
+<!-- Die Zahl IST das Problem. Bauform aus einem frueheren Audit, wo sie
+     funktioniert hat: "3 Versandkostenschwellen, gleichzeitig", "0
+     Länder, bei denen die Preise übereinstimmen". Wer nur diese Zeile liest,
+     weiß, worum es geht.
+
+     Welche zwei bis vier von allen Befunden das sind, entscheidet die Sitzung
+     und schreibt es in report-text.json. Jede Kachel nennt ihren Befund: eine
+     Zahl auf Seite eins ohne Herkunft kann der Leser nicht nachschlagen. -->
+<p class="eyebrow eyebrow--line">Was den Shop gerade am meisten kostet</p>
+__PROBLEMS__
+
+<!-- ======================= 3 · Kennzahlenleiste ======================= -->
+<!-- Sechs Kennzahlen, drei mal zwei, jede mit ihrer Veränderung gegen das
+     Vorjahr. Bis zum 07.09.2026 waren es acht in einer Viererreihe, darunter
+     Suchklicks und zwei Katalogzahlen.
+
+     DIE AUSWAHL FOLGT DER UMSATZGLEICHUNG, nicht dem, was gerade greifbar ist:
+     Sitzungen mal Conversion Rate mal Bestellwert mal Kauffrequenz. Umsatz ist
+     das Ergebnis, die vier Faktoren sind die Hebel, und die Wiederkaufrate ist
+     der vierte, der lange fehlte. Suchklicks sind ein Kanal-Input eine Ebene
+     tiefer und stehen im SEO-Kapitel; Katalogzahlen sind ein Bestandsfakt und
+     kein Ergebnis.
+
+     JEDE ZAHL TRÄGT IHREN VERGLEICH. Stephen Few: "To state that
+     quarter-to-date sales total $736,502 without any context means little.
+     Compared to what?" Der Zeitraum steht einmal über der Leiste, nicht acht
+     Mal in acht Bildunterschriften. -->
+<p class="kpi-period">__KPI_PERIOD__</p>
+<div class="kpi-grid kpi-grid--3">
+  <div class="kpi">
+    <p class="label">Umsatz</p>
+    <p class="value">__KPI_REVENUE__</p>
+    <p class="caption">__KPI_REVENUE_NOTE__</p>
+  </div>
+  <div class="kpi">
+    <p class="label">Bestellungen</p>
+    <p class="value">__KPI_ORDERS__</p>
+    <p class="caption">__KPI_ORDERS_NOTE__</p>
+  </div>
+  <div class="kpi">
+    <p class="label">Ø Bestellwert</p>
+    <p class="value">__KPI_AOV__</p>
+    <p class="caption">__KPI_AOV_NOTE__</p>
+  </div>
+  <div class="kpi">
+    <p class="label">Conversion Rate</p>
+    <p class="value">__KPI_CR__</p>
+    <p class="caption">__KPI_CR_NOTE__</p>
+  </div>
+  <div class="kpi">
+    <p class="label">Sitzungen</p>
+    <p class="value">__KPI_SESSIONS__</p>
+    <p class="caption">__KPI_SESSIONS_NOTE__</p>
+  </div>
+  <div class="kpi">
+    <p class="label">__KPI_SIXTH_LABEL__</p>
+    <p class="value __KPI_SIXTH_CLASS__">__KPI_SIXTH__</p>
+    <p class="caption">__KPI_SIXTH_NOTE__</p>
+  </div>
+</div>
+
+<!-- ================= 3c · Health Score ================= -->
+<!-- Die grosse Zahl heute, daneben das Ziel nach Umsetzung, darunter je
+     Bereich ein Balken mit Zielmarke. Bauform aus dem audit-light.
+
+     ES GIBT KEINEN BRANCHEN-BENCHMARK, und deshalb steht auch keiner da: die
+     kursierenden Zahlen stammen aus Aggregator-Blogs und machen den Report
+     angreifbar. Verglichen wird gegen 100 (ein Shop ohne Befunde), gegen das
+     Ziel, und ab dem naechsten Lauf gegen den heutigen Wert. Genau dafuer
+     existiert die Baseline. -->
+<p class="eyebrow eyebrow--line">Wo der Shop steht</p>
+__SCORES__
+
+<!-- ======================= 4 · Zusammenfassung ======================= -->
+<!-- Wer nur diese Seite liest, muss danach gebrieft sein: was gemessen wurde,
+     wie der Shop dasteht, was das Problem ist, was daraus folgt. Die fünf
+     Labels stehen fest, der Lauf füllt nur die Werte. -->
+<div class="summary">
+  <div class="summary-row">
+    <div class="summary-label">Was du hier siehst</div>
+    <div class="summary-value">__SUMMARY_WHAT__</div>
+  </div>
+  <div class="summary-row">
+    <div class="summary-label">Warum</div>
+    <div class="summary-value">__SUMMARY_WHY__</div>
+  </div>
+  <div class="summary-row">
+    <div class="summary-label">Status quo</div>
+    <div class="summary-value">__SUMMARY_STATUS__</div>
+  </div>
+  <div class="summary-row">
+    <div class="summary-label">Das Problem</div>
+    <div class="summary-value">__SUMMARY_PROBLEM__</div>
+  </div>
+  <div class="summary-row">
+    <div class="summary-label">Was möglich ist</div>
+    <div class="summary-value">__SUMMARY_POSSIBLE__</div>
+  </div>
+</div>
+
+<!-- ================= 4b · Die wichtigsten Erkenntnisse ================= -->
+<!-- Fünf Sätze, die den ganzen Report tragen. Jeder nennt eine gemessene Zahl
+     und sagt, was aus ihr folgt. Wer nach diesen fünf Sätzen aufhört zu lesen,
+     kann trotzdem entscheiden, was als Nächstes passiert. -->
+<div class="no-break">
+<p class="eyebrow eyebrow--line">Die wichtigsten Erkenntnisse</p>
+__TAKEAWAYS__
+</div>
+
+<!-- ============== 4c · Die Befunde im Überblick ============== -->
+<!-- Navigation für ein Dokument, das niemand von vorn bis hinten liest: wo die
+     Befunde liegen, wie schwer sie wiegen, in welchem Abschnitt sie stehen.
+     Bis zum 07.09.2026 stand hier "Der Zustand je Bereich", eine Kernzahl je
+     Bereich ohne Zeitraum und mit einer Einordnung, die der Leser nicht
+     auflösen konnte. Die Zahlen stehen jetzt in der Kennzahlenleiste darüber
+     und in den Fachsektionen, hier steht der Wegweiser.
+
+     Belegte Form: IIA Audit Report Writing Toolkit, "a dashboard that lists
+     the findings in the form of a table", und GAO Yellow Book 9.17e
+     (Highlights-Seite). -->
+<div class="no-break">
+  <p class="eyebrow eyebrow--line">Die Befunde im Überblick</p>
+  __FINDINGS_OVERVIEW__
+</div>
+
+<!-- ======================= 5 · Inhalt ======================= -->
+<div class="no-break">
+<p class="eyebrow eyebrow--line">Inhalt</p>
+<div class="toc">
+  <div class="toc-row"><div class="toc-num">1</div>
+    <div class="toc-title">Shop-Setup <span>· womit der Shop am Stichtag läuft</span></div></div>
+  <div class="toc-row"><div class="toc-num">2</div>
+    <div class="toc-title">Tracking und Datenqualität <span>· ob die Zahlen tragen, auf denen alles Weitere steht</span></div></div>
+  <div class="toc-row"><div class="toc-num">3</div>
+    <div class="toc-title">Umsatz und Sortiment <span>· Umsatz, Saison und wie viel davon kaufbar ist</span></div></div>
+  <div class="toc-row"><div class="toc-num">4</div>
+    <div class="toc-title">Traffic und Kanäle <span>· woher die Besucher kommen und was sie wert sind</span></div></div>
+  <div class="toc-row"><div class="toc-num">5</div>
+    <div class="toc-title">Conversion Rate Optimierung <span>· wo im Kaufweg die Besucher verloren gehen</span></div></div>
+  <div class="toc-row"><div class="toc-num">6</div>
+    <div class="toc-title">Suchmaschinenoptimierung (SEO) <span>· Sichtbarkeit in der Google-Suche, Bestand und Chancen</span></div></div>
+  <div class="toc-row"><div class="toc-num">7</div>
+    <div class="toc-title">Generative Engine Optimization (GEO) <span>· ob die Marke in AI-Antworten vorkommt</span></div></div>
+  <div class="toc-row"><div class="toc-num">8</div>
+    <div class="toc-title">Technisches SEO und Ladezeit <span>· was die Seite ausbremst</span></div></div>
+  <div class="toc-row"><div class="toc-num">9</div>
+    <div class="toc-title">Produktdaten und Content <span>· wie vollständig Produktdaten und Texte gepflegt sind</span></div></div>
+  <div class="toc-row"><div class="toc-num">10</div>
+    <div class="toc-title">Wettbewerb <span>· wer über dieselben Suchanfragen konkurriert</span></div></div>
+  <div class="toc-row"><div class="toc-num">11</div>
+    <div class="toc-title">Suchmaschinenwerbung (SEA) <span>· Shopping-Präsenz und was das Werbekonto zeigt</span></div></div>
+  <div class="toc-row"><div class="toc-num">12</div>
+    <div class="toc-title">Maßnahmen <span>· was aus den Befunden folgt, in der Reihenfolge der Umsetzung</span></div></div>
+  <div class="toc-row"><div class="toc-num">13</div>
+    <div class="toc-title">Lücken in der Datenlage <span>· welche Quelle gefehlt oder weniger geliefert hat</span></div></div>
+  <div class="toc-row"><div class="toc-num">14</div>
+    <div class="toc-title">Wie der PTAI E-Com Score gerechnet wird <span>· die vollständige Rechnung hinter der Zahl</span></div></div>
+  <div class="toc-row"><div class="toc-num">15</div>
+    <div class="toc-title">Quellen <span>· Umfang und Stand je Quelle</span></div></div>
+</div>
+</div><!-- /.no-break -->
+
+<!-- ======================= BAUKASTEN (Referenz) =======================
+Beim Füllen der Sektionen ausschließlich diese Blöcke verwenden. Zahlen im
+deutschen Format (12.480 €, 3,1 %), Zahlenzellen und Zahlen-Spaltenköpfe immer
+mit class="num".
+
+1. Tabelle. Erste Wahl für jeden Abschnitt: wo eine Tabelle geht, wird kein
+   Absatz geschrieben (Playbook, "Darstellung"). Eine Zelle, die eine Maßnahme
+   auslöst, bekommt zusätzlich class="neg". Sparsam, Rot trägt nur
+   Handlungsbedarf.
+
+   JEDE KENNZAHL TRÄGT IHREN BEZUG IN DERSELBEN ZEILE. "Klicks 120.000" ist
+   keine Aussage; "Klicks aus der Google-Suche · 120.000 · in 16 Monaten, bei
+   4,8 Mio. Impressionen" ist eine. Eine Baseline-Tabelle hat deshalb
+   mindestens drei Spalten: Kennzahl, Wert, Bezug.
+
+2. Befund. Seit 07.09.2026 in dieser Form, weil die Vorgängerform den ganzen
+   Messsatz fett als Überschrift setzte und damit unlesbar war:
+
+<div class="finding-block">
+  <p class="eyebrow">MES-02</p>
+  <h3><!-- EIN Satz, die Kernaussage. Nicht der ganze Messtext --></h3>
+  <table>
+    <tbody>
+      <tr><td>Was gemessen wurde</td><td class="num">98.000</td></tr>
+    </tbody>
+  </table>
+  <p><!-- Was daraus folgt, ein bis zwei Sätze --></p>
+  <p class="evidence">Beleg: ga4.json &gt; funnel.add_to_cart.sessions</p>
+</div>
+
+   Die Zahlen stehen in der Tabelle, nicht im Fließtext. Der Satz darunter
+   sagt, was folgt, und wiederholt die Tabelle nicht.
+
+3. Befund mit großer Zahl links, für den einen tragenden Befund je Sektion:
+
+<div class="finding">
+  <div class="finding-figure">73<span class="of">% von 760 Bestellungen</span></div>
+  <div class="finding-body">
+    <h3><!-- Der Befund als ganzer Satz --></h3>
+    <p><!-- Was folgt --></p>
+    <p class="evidence">Beleg: shopify.json &gt; totals.orders</p>
+  </div>
+</div>
+
+   ACHTUNG: .finding ist ein Raster mit fester erster Spalte von 34 mm. Ohne
+   das finding-figure-Element landet der Text in dieser schmalen Spalte, und
+   das Dokument verdreifacht seine Seitenzahl. Wer keine Leitzahl hat, nimmt
+   Block 2 statt Block 3.
+
+4. Maßnahme. Eine Zeile in einer Tabelle reicht nicht: der Leser muss sie
+   beauftragen können, ohne zurückzublättern.
+
+<div class="measure">
+  <p class="eyebrow">M-030 · Messung · Hebel hoch · Aufwand klein</p>
+  <h3><!-- Die Handlung --></h3>
+  <div class="summary">
+    <div class="summary-row"><div class="summary-label">Woraus</div>
+      <div class="summary-value">Befund MES-02: <!-- Kernaussage --></div></div>
+    <div class="summary-row"><div class="summary-label">Was es bringt</div>
+      <div class="summary-value"><!-- Wirkung --></div></div>
+    <div class="summary-row"><div class="summary-label">Wo</div>
+      <div class="summary-value"><!-- wo gearbeitet wird --></div></div>
+    <div class="summary-row"><div class="summary-label">Wer</div>
+      <div class="summary-value"><!-- Betreiber, Marke des Kunden oder Dritter Dienstleister --></div></div>
+    <div class="summary-row"><div class="summary-label">Erledigt, wenn</div>
+      <div class="summary-value"><!-- die Prüfregel --></div></div>
+  </div>
+</div>
+
+5. Kernbefund (dunkler Callout, höchstens einer je Sektion) und Einordnung,
+   die für die ganze Sektion gilt (heller Callout):
+
+<div class="callout-dark"><p><span class="plus">+</span> <!-- ein Satz --></p></div>
+<div class="callout-light"><p><!-- eine Einordnung, die ändert, was der Leser tut --></p></div>
+
+   DER HELLE KASTEN IST KEINE ABLAGE FÜR RANDBEDINGUNGEN. Er ist die
+   auffälligste Stelle seiner Sektion und wird zuerst gelesen. Was zu genau
+   einer Zahl gehört, gehört an diese Zahl, nicht hierher.
+
+6. Zwischen-Label innerhalb einer Sektion: <p class="eyebrow eyebrow--line">Die Zahlen</p>
+
+7. Quellenzeile im Abschnitt Quellen:
+
+<div class="source-row">
+  <span class="tool">Shopify Admin</span>
+  <span><!-- Umfang --></span>
+  <span class="as-of">01.10.2026</span>
+</div>
+
+8. Umbruch-Helfer: class="page-break" erzwingt eine neue Seite,
+   class="no-break" hält einen Block zusammen.
+
+DIE REGELN, DIE HIER ANDERS GELTEN ALS IM MONATS-REPORT
+
+a) Kein Vergleich, keine Bewegung. Ein Audit ist Messpunkt eins.
+   "Gestiegen", "verbessert", "im Trend" haben in diesem Dokument keinen
+   Beleg. Wo eine Reihe vorliegt, beschreibt sie den Verlauf im erhobenen
+   Zeitraum, nie eine Wirkung.
+
+b) Ein fehlender Wert wird als fehlend gezeigt, nie als 0 und nie
+   weggelassen. Eine leere Zelle liest sich als Null, und eine Null ist eine
+   Messung. Steht ein Wert nicht zur Verfügung, sagt die Zelle daneben, was
+   ihn ersetzt oder wann er kommt.
+
+c) Kopf, Einstieg und Schlussblock erklären nie, was fehlt. Was gefehlt hat,
+   steht in der Lücken-Sektion.
+
+d) Der Report beantwortet Fragen zum Shop, nicht zum Werkzeug. Die Spalte
+   "Quelle" trägt Werkzeugnamen (Shopify Admin, Search Console), nie
+   Dateinamen. In der Belegzeile eines Befunds stehen die Felder, damit der
+   Leser nachrechnen kann; das ist der einzige Ort dafür.
+
+e) Gleichartiges wird gleich behandelt. Stehen mehrere Werte derselben Sorte
+   nebeneinander und du kommentierst einen davon, hast du über die anderen
+   gesagt, an ihnen sei nichts.
+
+f) Jeder Befund hat eine ID, jede Maßnahme nennt ihren Befund. Ohne die
+   Verknüpfung kann der Leser eine Maßnahme nicht beauftragen: er weiß nicht,
+   worauf sie sich stützt. Das war die Beanstandung vom 07.09.2026.
+
+g) DAS VOKABULAR. Ein Wort je Sache, im ganzen Dokument:
+   die eingefrorenen Zahlen = Baseline (nicht Nullpunkt, Ausgangswerte)
+   der nächste Lauf = der spätere Report (nicht Folgereport)
+   die erfassten Seiten = Seiten im Shop, geöffnet und geprüft
+     (NICHT gecrawlte Seiten, NICHT Adressen, NICHT URLs)
+   die Kennzahl je Bestellung = Ø Bestellwert
+   fremde Skripte = Skripte fremder Anbieter
+==================================================================== -->
+
+<!-- ======================= 6 · Fachsektionen ======================= -->
+
+<section class="page-break">
+  <div class="chapter-header">
+    <h2>1 · Shop-Setup</h2>
+    <img class="logo" src="__LOGO_PATH__" alt="Path to AI">
+  </div>
+  <p class="section-intro">Womit der Shop am Stichtag läuft: Sortiment, Theme,
+  Sprachen, Märkte, Zahlarten und die Skripte fremder Anbieter. Diese Angaben
+  ordnen jede Zahl in den folgenden Abschnitten ein.</p>
+  <!-- SECTION:shop -->
+</section>
+
+<section class="page-break">
+  <div class="chapter-header">
+    <h2>2 · Tracking und Datenqualität</h2>
+    <img class="logo" src="__LOGO_PATH__" alt="Path to AI">
+  </div>
+  <p class="section-intro">Dieser Abschnitt steht vorn, weil er über die
+  übrigen entscheidet. Wenn die Messung Lücken hat, ist jede Zahl danach eine
+  Behauptung statt eines Befunds. Hier steht, was gemessen wird, was nicht, und
+  welche Zahlen deshalb mit Vorbehalt zu lesen sind.</p>
+  <!-- SECTION:measurement -->
+</section>
+
+<section class="page-break">
+  <div class="chapter-header">
+    <h2>3 · Umsatz und Sortiment</h2>
+    <img class="logo" src="__LOGO_PATH__" alt="Path to AI">
+  </div>
+  <p class="section-intro">Umsatz, Bestellungen und Bestellwert über die volle
+  Historie, dazu die Saison und der Zustand des Sortiments: wie viel davon
+  tatsächlich kaufbar ist und wie viel Umsatz auf wie wenigen Artikeln liegt.</p>
+  <!-- SECTION:commerce -->
+</section>
+
+<section class="page-break">
+  <div class="chapter-header">
+    <h2>4 · Traffic und Kanäle</h2>
+    <img class="logo" src="__LOGO_PATH__" alt="Path to AI">
+  </div>
+  <p class="section-intro">Woher die Besucher kommen, wie viel Umsatz jeder
+  Kanal trägt und wie gut er konvertiert. Ein Kanal mit vielen Besuchern und
+  wenig Umsatz ist ein anderer Fall als einer mit wenigen und viel.</p>
+  <!-- SECTION:traffic -->
+</section>
+
+<section class="page-break">
+  <div class="chapter-header">
+    <h2>5 · Conversion Rate Optimierung</h2>
+    <img class="logo" src="__LOGO_PATH__" alt="Path to AI">
+  </div>
+  <p class="section-intro">Der Weg vom Produkt bis zur Bestellung, Stufe für
+  Stufe. Wo die meisten Besucher aussteigen, ist der Punkt mit dem größten
+  Hebel, und er liegt selten dort, wo man ihn vermutet.</p>
+  <!-- SECTION:conversion -->
+</section>
+
+<section class="page-break">
+  <div class="chapter-header">
+    <h2>6 · Trust und Compliance</h2>
+    <img class="logo" src="__LOGO_PATH__" alt="Path to AI">
+  </div>
+  <p class="section-intro">Was ein Käufer sehen muss, bevor er einem Shop sein
+  Geld gibt: Impressum, Widerruf, AGB und Datenschutz, die Preisangaben samt
+  Grundpreis, Bewertungen am Kaufpunkt und Siegel. Eine Feststellung, was
+  vorhanden und auffindbar ist, keine juristische Prüfung.</p>
+  <!-- SECTION:trust -->
+</section>
+
+<section class="page-break">
+  <div class="chapter-header">
+    <h2>7 · Suchmaschinenoptimierung (SEO)</h2>
+    <img class="logo" src="__LOGO_PATH__" alt="Path to AI">
+  </div>
+  <p class="section-intro">Was der Shop in der Google-Suche erreicht: gemessene
+  Klicks, der Ranking-Bestand, die Begriffe knapp vor Seite eins und die
+  Themen, für die Wettbewerber ranken und der Shop nicht.</p>
+  <!-- SECTION:seo -->
+</section>
+
+<section class="page-break">
+  <div class="chapter-header">
+    <h2>8 · Generative Engine Optimization (GEO)</h2>
+    <img class="logo" src="__LOGO_PATH__" alt="Path to AI">
+  </div>
+  <p class="section-intro">Ob die Marke in den Antworten von ChatGPT,
+  Perplexity und Googles AI vorkommt, und wer stattdessen als Quelle genannt
+  wird. Das ist der Teil der Sichtbarkeit, den klassische SEO-Tools nicht
+  messen.</p>
+  <!-- SECTION:geo -->
+</section>
+
+<section class="page-break">
+  <div class="chapter-header">
+    <h2>9 · Technisches SEO und Ladezeit</h2>
+    <img class="logo" src="__LOGO_PATH__" alt="Path to AI">
+  </div>
+  <p class="section-intro">Was echte Nutzer an Ladezeit erleben, je Seitentyp,
+  und was der eigene Durchgang durch den Shop an technischen Fehlern gefunden
+  hat.</p>
+  <!-- SECTION:tech -->
+</section>
+
+<section class="page-break">
+  <div class="chapter-header">
+    <h2>10 · Produktdaten und Content</h2>
+    <img class="logo" src="__LOGO_PATH__" alt="Path to AI">
+  </div>
+  <p class="section-intro">Wie vollständig Produktdaten, Texte und Bilder
+  gepflegt sind. Gepflegte Felder sind die Voraussetzung dafür, dass Suche,
+  Filter und AI-Antworten den Shop überhaupt verstehen.</p>
+  <!-- SECTION:catalogue -->
+</section>
+
+<section class="page-break">
+  <div class="chapter-header">
+    <h2>11 · Wettbewerb</h2>
+    <img class="logo" src="__LOGO_PATH__" alt="Path to AI">
+  </div>
+  <p class="section-intro">Wer über dieselben Suchanfragen konkurriert, wie
+  weit der Abstand ist und wo er herkommt. Die Wettbewerber sind nicht
+  vorgegeben, sondern aus der tatsächlichen Überschneidung in den
+  Suchergebnissen bestimmt.</p>
+  <!-- SECTION:competition -->
+</section>
+
+<section class="page-break">
+  <div class="chapter-header">
+    <h2>12 · Suchmaschinenwerbung (SEA)</h2>
+    <img class="logo" src="__LOGO_PATH__" alt="Path to AI">
+  </div>
+  <p class="section-intro">Was der Shop in Google Shopping und der bezahlten
+  Suche erreicht, und wie sich das zu den organischen Rankings verhält.</p>
+  <!-- SECTION:sea -->
+</section>
+
+<section class="page-break">
+  <div class="chapter-header">
+    <h2>13 · Maßnahmen</h2>
+    <img class="logo" src="__LOGO_PATH__" alt="Path to AI">
+  </div>
+  <p class="section-intro">Die Reihenfolge, in der ich sie angehen würde.
+  Jede Maßnahme steht ausführlich bei dem Befund, aus dem sie folgt; die letzte
+  Spalte sagt, wo. Zuerst stehen die Maßnahmen an der Messung, weil sie
+  entscheiden, wie belastbar alle anderen Zahlen sind. Danach nach Hebel und
+  Aufwand.</p>
+  <!-- SECTION:measures -->
+</section>
+
+<section class="page-break">
+  <div class="chapter-header">
+    <h2>14 · Lücken in der Datenlage</h2>
+    <img class="logo" src="__LOGO_PATH__" alt="Path to AI">
+  </div>
+  <p class="section-intro">Welche Quelle gefehlt oder weniger geliefert hat,
+  und welche Frage dadurch offen blieb. Daraus siehst du, was ein
+  freigeschalteter Zugang beim nächsten Lauf zusätzlich zeigt.</p>
+  <!-- SECTION:gaps -->
+</section>
+
+<section class="page-break">
+  <div class="chapter-header">
+    <h2>15 · Wie der PTAI E-Com Score gerechnet wird</h2>
+    <img class="logo" src="__LOGO_PATH__" alt="Path to AI">
+  </div>
+  <p class="section-intro">Die vollständige Rechnung hinter der Zahl auf der
+  ersten Seite: welche Befunde wie viele Punkte kosten, wie die Bereiche
+  gewichtet sind, wo die Grenzen liegen und was der Score ausdrücklich nicht
+  leistet. Diese Seite ist aus dem Rechenmodul selbst erzeugt, sie kann also
+  nicht von ihm abweichen.</p>
+  <!-- SECTION:method -->
+</section>
+
+<section class="page-break">
+  <div class="chapter-header">
+    <h2>16 · Quellen</h2>
+    <img class="logo" src="__LOGO_PATH__" alt="Path to AI">
+  </div>
+  <p class="section-intro">Jede Quelle, aus der eine Zahl in diesem Dokument
+  stammt, mit Umfang und Stand der Erhebung.</p>
+  <!-- SECTION:sources -->
+</section>
+
+<!-- ======================= 7 · Nächster Schritt ======================= -->
+<div class="next-step">
+  <p class="next-step-label">Nächster Schritt</p>
+  __NEXT_STEP__
+</div>
+
+<!-- Schluss-Panel: die letzte Seite. Den Abschnitt zwischen den beiden
+     CLOSING-Markierungen setzt scripts/audit/closing.py (apply) ein, nachdem
+     report_build.py alle übrigen Platzhalter gefüllt hat. Ist
+     PTAI_CLOSING_FILE gesetzt und lesbar, ersetzt die Schlussseite des
+     Betreibers alles zwischen den Markierungen, die selbst stehen bleiben,
+     dieselbe Seite wie im Monats-Report und in audit-light. Sonst bleibt das
+     Panel stehen: Logo und
+     Fußzeile fest, dazwischen der neutrale Schluss aus den Einstellungen des
+     Betreibers, eine Kontaktzeile je gesetztem und gültigem Wert (Unternehmen,
+     Ansprechpartner, E-Mail, Termin), darunter immer die Herkunftszeile, kein
+     Satz. Hier nichts von Hand schreiben, die Markierungen nicht verschieben. -->
+</div><!-- /.content -->
+
+<!-- CLOSING:start -->
+<footer class="closing">
+  <img class="logo-reversed" src="__LOGO_REVERSED_PATH__" alt="Path to AI">
+  __CLOSING__
+  <div class="panel-footer">
+    <span>Path to AI · path-to-ai.com</span>
+    <span>__BRAND__ · E-Com-Audit __RUN_LABEL__</span>
+  </div>
+</footer>
+<!-- CLOSING:end -->
+
+</body>
+</html>

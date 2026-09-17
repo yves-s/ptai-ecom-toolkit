@@ -1,0 +1,16 @@
+{
+  "results": [
+    {
+      "campaign": {"resourceName": "customers/1234567890/campaigns/1", "id": "1",
+                    "name": "Brand DE", "status": "ENABLED",
+                    "advertisingChannelType": "SEARCH"},
+      "metrics": {"impressions": "8000", "clicks": "610", "costMicros": "310000000",
+                   "conversions": 30.0, "conversionsValue": 3900.0,
+                   "searchImpressionShare": 0.68,
+                   "searchBudgetLostImpressionShare": 0.1,
+                   "searchRankLostImpressionShare": 0.22},
+      "segments": {"date": "2026-09-02"}
+    }
+  ],
+  "fieldMask": "campaign.id,campaign.name,metrics.impressions"
+}

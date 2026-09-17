@@ -1,0 +1,213 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<title>__BRAND__ · Monats-Report __PERIOD_LABEL__</title>
+<!--
+  Platzhalter, beim Render zu ersetzen (Skill report). Die Marker stehen nur
+  im Markup unten (Form: doppelter Unterstrich, Name, doppelter Unterstrich);
+  dieser Kommentar nennt sie bewusst nicht wörtlich, damit ein globales
+  Ersetzen ihn nicht anfasst:
+
+  - CSS-Pfad-Platzhalter: absoluter Pfad zu assets/brand/report.css im Plugin.
+    Die Fonts liegen relativ zur CSS-Datei (fonts/...), deshalb immer auf die
+    Plugin-CSS zeigen, nie die CSS ohne ihren fonts/-Ordner kopieren.
+  - Logo-Pfad-Platzhalter: absoluter Pfad zu assets/brand/logo.svg im Plugin.
+  - Reversed-Logo-Platzhalter: absoluter Pfad zu assets/brand/logo-reversed.svg,
+    die helle Variante für das dunkle Schluss-Panel. Nie das normale Logo dort
+    einsetzen, es verschwindet auf Ink.
+  - Brand-Platzhalter: Brand-Name aus reporting/config.json.
+  - Zeitraum-Platzhalter: Berichtsmonat als Label, z. B. "Juli 2026".
+  - Datums-Platzhalter: Erstellungsdatum, z. B. "10.08.2026".
+
+  Die sechs SECTION-Kommentare unten werden durch gefülltes Kapitel-HTML
+  ersetzt, gebaut ausschließlich aus den BAUKASTEN-Blöcken (Kommentar unten).
+  Headless Chrome braucht auflösbare Pfade: alle Pfade absolut.
+-->
+<link rel="stylesheet" href="__CSS_PATH__">
+<style>
+  /* Template-lokale Regeln, ergänzen report.css (dort nichts duplizieren). */
+  .logo { min-width: 40px; } /* Wortmarke nie unter 40 px Breite */
+  .cover { margin: 0 0 24pt; }
+  .cover h1 { margin-top: 14pt; }
+  .meta {
+    font-family: var(--p2a-font-mono);
+    font-weight: 500;
+    font-size: 8.5pt;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--p2a-ink-soft);
+    margin: 0 0 4pt;
+  }
+  /* Das Schluss-Panel (.closing) liegt komplett in report.css, damit jeder
+     Report dieselbe Rückseite bekommt. */
+</style>
+</head>
+<body>
+
+<div class="content">
+
+<!-- ======================= Deckblatt / Kopf ======================= -->
+<header class="cover">
+  <div class="chapter-header">
+    <p class="eyebrow eyebrow--line">E-Com-Report · Monatlich</p>
+    <img class="logo" src="__LOGO_PATH__" alt="Path to AI">
+  </div>
+  <h1>__BRAND__<span class="dot">.</span></h1>
+  <p class="meta">Zeitraum __PERIOD_LABEL__ · erstellt am __GENERATED_DATE__</p>
+</header>
+
+<!-- ======================= BAUKASTEN (Referenz) =======================
+Beim Füllen der Kapitel ausschließlich diese Blöcke verwenden, damit jeder
+Monats-Report gleich aussieht. Zahlen im deutschen Format (12.480 €, 3,1 %),
+Zahlenzellen und Zahlen-Spaltenköpfe immer mit class="num".
+
+1. KPI-Zeile, drei Kacheln (vier Kacheln: zusätzlich Klasse kpi-grid--4):
+
+<div class="kpi-grid">
+  <div class="kpi">
+    <p class="label">Umsatz</p>
+    <p class="value">12.480<span class="unit">€</span></p>
+    <p class="caption">+8,2 % zum Vormonat</p>
+  </div>
+  <div class="kpi">
+    <p class="label">Bestellungen</p>
+    <p class="value">64</p>
+    <p class="caption">Vormonat: 59</p>
+  </div>
+  <div class="kpi">
+    <p class="label">AOV</p>
+    <p class="value">195<span class="unit">€</span></p>
+    <p class="caption">stabil zum Vormonat</p>
+  </div>
+</div>
+
+2. Hero-KPI, eine Zahl groß (Executive Summary, maximal eine Zeile davon):
+
+<div class="kpi-grid">
+  <div class="kpi kpi--hero">
+    <p class="label">Umsatz im Monat</p>
+    <p class="value">12.480<span class="unit">€</span></p>
+    <p class="caption">+8,2 % zum Vormonat</p>
+  </div>
+</div>
+
+3. Tabelle (thead wiederholt sich beim Seitenumbruch von selbst). Eine Zelle,
+   die eine Maßnahme auslöst, bekommt zusätzlich class="neg" und wird dann rot
+   hinterlegt. Sparsam: negativer Bestand, ein Kanal ohne Umsatz, eine
+   Abbruchquote, die im Kapitel Maßnahmen wieder auftaucht. Nicht jede Zahl,
+   die kleiner geworden ist.
+
+<table>
+  <thead>
+    <tr>
+      <th>Produkt</th>
+      <th class="num">Umsatz</th>
+      <th class="num">Bestellungen</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Outdoorjacke</td>
+      <td class="num">3.120 €</td>
+      <td class="num neg">-1</td>
+    </tr>
+  </tbody>
+</table>
+
+4. Kernbefund (dunkler Callout, sparsam: maximal einer je Kapitel):
+
+<div class="callout-dark">
+  <p><span class="plus">+</span> Kernbefund: der Traffic steht, die Conversion
+  nicht. 4.200 Sessions, 6 Bestellungen.</p>
+</div>
+
+5. Hinweis oder Einordnung (heller Callout, auch für "nicht verfügbar"):
+
+<div class="callout-light">
+  <p>Quelle nicht verfügbar: GA4 (kein Service-Account-Zugriff).
+  Traffic-Zahlen fehlen in diesem Monat.</p>
+</div>
+
+6. Zwischen-Label innerhalb eines Kapitels (kein h3 nötig):
+
+<p class="eyebrow eyebrow--line">Conversion-Funnel</p>
+
+7. Umbruch-Helfer: class="page-break" erzwingt eine neue Seite,
+   class="no-break" hält einen Block zusammen.
+==================================================================== -->
+
+<section>
+  <div class="chapter-header">
+    <h2>Executive Summary</h2>
+  </div>
+  <!-- SECTION:executive -->
+</section>
+
+<section class="page-break">
+  <div class="chapter-header">
+    <h2>Shop</h2>
+    <img class="logo" src="__LOGO_PATH__" alt="Path to AI">
+  </div>
+  <!-- SECTION:shop -->
+</section>
+
+<section class="page-break">
+  <div class="chapter-header">
+    <h2>Traffic</h2>
+    <img class="logo" src="__LOGO_PATH__" alt="Path to AI">
+  </div>
+  <!-- SECTION:traffic -->
+</section>
+
+<section class="page-break">
+  <div class="chapter-header">
+    <h2>SEO</h2>
+    <img class="logo" src="__LOGO_PATH__" alt="Path to AI">
+  </div>
+  <!-- SECTION:seo -->
+</section>
+
+<section class="page-break">
+  <div class="chapter-header">
+    <h2>GEO</h2>
+    <img class="logo" src="__LOGO_PATH__" alt="Path to AI">
+  </div>
+  <!-- SECTION:geo -->
+</section>
+
+<section class="page-break">
+  <div class="chapter-header">
+    <h2>Maßnahmen</h2>
+    <img class="logo" src="__LOGO_PATH__" alt="Path to AI">
+  </div>
+  <!-- SECTION:massnahmen -->
+</section>
+
+<!-- Schluss-Panel: die letzte Seite. Den Abschnitt zwischen den beiden
+     CLOSING-Markierungen setzt scripts/audit/closing.py (apply) ein, nachdem
+     die Report-Skill alle übrigen Platzhalter gefüllt und die Datei
+     gespeichert hat. Ist PTAI_CLOSING_FILE gesetzt und lesbar, ersetzt die
+     Schlussseite des Betreibers alles zwischen den Markierungen, die selbst
+     stehen bleiben, dieselbe Seite wie im Audit und in audit-light. Sonst
+     bleibt das Panel
+     stehen: Logo und Fußzeile fest, dazwischen der neutrale Schluss aus den
+     Einstellungen des Betreibers, eine Kontaktzeile je gesetztem und gültigem
+     Wert (Unternehmen, Ansprechpartner, E-Mail, Termin), darunter immer die
+     Herkunftszeile, kein Satz. Hier nichts von Hand schreiben, die
+     Markierungen nicht verschieben. -->
+</div><!-- /.content -->
+
+<!-- CLOSING:start -->
+<footer class="closing">
+  <img class="logo-reversed" src="__LOGO_REVERSED_PATH__" alt="Path to AI">
+  __CLOSING__
+  <div class="panel-footer">
+    <span>Path to AI · path-to-ai.com</span>
+    <span>__BRAND__ · Monats-Report __PERIOD_LABEL__</span>
+  </div>
+</footer>
+<!-- CLOSING:end -->
+
+</body>
+</html>

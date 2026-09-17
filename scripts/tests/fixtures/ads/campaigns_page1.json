@@ -1,0 +1,28 @@
+{
+  "results": [
+    {
+      "campaign": {"resourceName": "customers/1234567890/campaigns/1", "id": "1",
+                    "name": "Brand DE", "status": "ENABLED",
+                    "advertisingChannelType": "SEARCH"},
+      "metrics": {"impressions": "12000", "clicks": "900", "costMicros": "450000000",
+                   "conversions": 42.0, "conversionsValue": 5400.0,
+                   "searchImpressionShare": 0.72,
+                   "searchBudgetLostImpressionShare": 0.08,
+                   "searchRankLostImpressionShare": 0.2},
+      "segments": {"date": "2026-08-14"}
+    },
+    {
+      "campaign": {"resourceName": "customers/1234567890/campaigns/2", "id": "2",
+                    "name": "Generisch DE", "status": "ENABLED",
+                    "advertisingChannelType": "SEARCH"},
+      "metrics": {"impressions": "3000", "clicks": "120", "costMicros": "90000000",
+                   "conversions": 2.0, "conversionsValue": 180.0,
+                   "searchImpressionShare": 0.21,
+                   "searchBudgetLostImpressionShare": 0.55,
+                   "searchRankLostImpressionShare": 0.24},
+      "segments": {"date": "2026-08-20"}
+    }
+  ],
+  "nextPageToken": "PAGE2",
+  "fieldMask": "campaign.id,campaign.name,metrics.impressions"
+}

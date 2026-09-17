@@ -1,0 +1,119 @@
+{
+  "version": "0.1.20260902",
+  "status_code": 20000,
+  "status_message": "Ok.",
+  "time": "0.0584 sec.",
+  "cost": 0.024072,
+  "tasks_count": 1,
+  "tasks_error": 0,
+  "tasks": [
+    {
+      "id": "09070755-2264-0272-0000-af48fc08ec7e",
+      "status_code": 20000,
+      "status_message": "Ok.",
+      "time": "0.0518 sec.",
+      "cost": 0.024072,
+      "result_count": 1,
+      "path": [
+        "v3",
+        "backlinks",
+        "anchors",
+        "live"
+      ],
+      "data": {
+        "api": "backlinks",
+        "function": "anchors",
+        "target": "path-to-ai.com",
+        "limit": 100,
+        "backlinks_status_type": "live",
+        "tag": "dev/2026-09-07/fixtures"
+      },
+      "result": [
+        {
+          "target": "path-to-ai.com",
+          "total_count": 2,
+          "items_count": 2,
+          "items": [
+            {
+              "type": "backlinks_anchor",
+              "anchor": "High Quality Dofollow Backlinks DA 50 PA 40 Premium PBN Network Service path-to-ai.com Rank First Page Google Fast SEO Link Building Buy Backlinks Online Cheap",
+              "rank": 0,
+              "backlinks": 19,
+              "first_seen": "2026-07-08 11:17:35 +00:00",
+              "lost_date": null,
+              "backlinks_spam_score": 63,
+              "broken_backlinks": 0,
+              "broken_pages": 0,
+              "referring_domains": 19,
+              "referring_domains_nofollow": 0,
+              "referring_main_domains": 19,
+              "referring_main_domains_nofollow": 0,
+              "referring_ips": 19,
+              "referring_subnets": 18,
+              "referring_pages": 19,
+              "referring_pages_nofollow": 0,
+              "referring_links_tld": {
+                "com": 18,
+                "us.com": 1
+              },
+              "referring_links_types": {
+                "anchor": 19
+              },
+              "referring_links_attributes": {
+                "noopener": 19
+              },
+              "referring_links_platform_types": {
+                "unknown": 19
+              },
+              "referring_links_semantic_locations": {
+                "": 19
+              },
+              "referring_links_countries": {
+                "": 17,
+                "US": 2
+              }
+            },
+            {
+              "type": "backlinks_anchor",
+              "anchor": "path-to-ai.com",
+              "rank": 0,
+              "backlinks": 4,
+              "first_seen": "2026-06-11 22:59:44 +00:00",
+              "lost_date": null,
+              "backlinks_spam_score": 60,
+              "broken_backlinks": 0,
+              "broken_pages": 0,
+              "referring_domains": 4,
+              "referring_domains_nofollow": 4,
+              "referring_main_domains": 4,
+              "referring_main_domains_nofollow": 4,
+              "referring_ips": 1,
+              "referring_subnets": 1,
+              "referring_pages": 4,
+              "referring_pages_nofollow": 4,
+              "referring_links_tld": {
+                "shop": 4
+              },
+              "referring_links_types": {
+                "anchor": 4
+              },
+              "referring_links_attributes": {
+                "nofollow": 4
+              },
+              "referring_links_platform_types": {
+                "blogs": 4,
+                "cms": 4
+              },
+              "referring_links_semantic_locations": {
+                "main": 4
+              },
+              "referring_links_countries": {
+                "": 4
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

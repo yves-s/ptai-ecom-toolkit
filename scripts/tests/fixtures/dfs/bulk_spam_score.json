@@ -1,0 +1,57 @@
+{
+  "version": "0.1.20260902",
+  "status_code": 20000,
+  "status_message": "Ok.",
+  "time": "0.2906 sec.",
+  "cost": 0.024108,
+  "tasks_count": 1,
+  "tasks_error": 0,
+  "tasks": [
+    {
+      "id": "09070755-2264-0482-0000-7bfcfbb3692a",
+      "status_code": 20000,
+      "status_message": "Ok.",
+      "time": "0.2225 sec.",
+      "cost": 0.024108,
+      "result_count": 1,
+      "path": [
+        "v3",
+        "backlinks",
+        "bulk_spam_score",
+        "live"
+      ],
+      "data": {
+        "api": "backlinks",
+        "function": "bulk_spam_score",
+        "targets": [
+          "path-to-ai.com",
+          "hubspot.com",
+          "shopify.com"
+        ],
+        "tag": "dev/2026-09-07/fixtures"
+      },
+      "result": [
+        {
+          "items_count": 3,
+          "items": [
+            {
+              "type": "backlinks_bulk_spam_score",
+              "target": "path-to-ai.com",
+              "spam_score": 62
+            },
+            {
+              "type": "backlinks_bulk_spam_score",
+              "target": "hubspot.com",
+              "spam_score": 4
+            },
+            {
+              "type": "backlinks_bulk_spam_score",
+              "target": "shopify.com",
+              "spam_score": 6
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

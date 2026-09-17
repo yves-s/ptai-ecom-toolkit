@@ -1,0 +1,54 @@
+{
+  "version": "0.1.20260902",
+  "status_code": 20000,
+  "status_message": "Ok.",
+  "time": "0.0686 sec.",
+  "cost": 0.024108,
+  "tasks_count": 1,
+  "tasks_error": 0,
+  "tasks": [
+    {
+      "id": "09070755-2264-0347-0000-1ab639cc07fa",
+      "status_code": 20000,
+      "status_message": "Ok.",
+      "time": "0.0090 sec.",
+      "cost": 0.024108,
+      "result_count": 1,
+      "path": [
+        "v3",
+        "backlinks",
+        "bulk_ranks",
+        "live"
+      ],
+      "data": {
+        "api": "backlinks",
+        "function": "bulk_ranks",
+        "targets": [
+          "path-to-ai.com",
+          "hubspot.com",
+          "shopify.com"
+        ],
+        "tag": "dev/2026-09-07/fixtures"
+      },
+      "result": [
+        {
+          "items_count": 3,
+          "items": [
+            {
+              "target": "path-to-ai.com",
+              "rank": 0
+            },
+            {
+              "target": "hubspot.com",
+              "rank": 680
+            },
+            {
+              "target": "shopify.com",
+              "rank": 812
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

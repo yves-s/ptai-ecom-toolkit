@@ -1,0 +1,20 @@
+{
+  "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
+  "name": "ptai-ecom",
+  "owner": {
+    "name": "Yves Schleich",
+    "url": "https://path-to-ai.com"
+  },
+  "metadata": {
+    "description": "E-Commerce-Audit, audit-light und Monats-Report für Shopify-Shops: Setup in zwei Teilen, Pulls aus Shopify, GA4, Search Console, PageSpeed, DataForSEO, Google Ads und GEO, Kunden-PDF und Wochen-Puls.",
+    "version": "0.2.2"
+  },
+  "plugins": [
+    {
+      "name": "ptai-ecom",
+      "source": "./",
+      "description": "E-Commerce-Audit, audit-light und Monats-Report für Shopify-Shops: Setup in zwei Teilen, Pulls aus Shopify, GA4, Search Console, PageSpeed, DataForSEO, Google Ads und GEO, Kunden-PDF und Wochen-Puls.",
+      "category": "productivity"
+    }
+  ]
+}
